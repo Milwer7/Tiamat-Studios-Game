@@ -1,8 +1,11 @@
 2a60927148abd1d33b818b535e306557
-::res://::1679332014
+::res://::1679341863
 icon.svg::CompressedTexture2D::7279996498089207833::1679331790::1679331806::1::::<><>::
-::res://resources/::1679332065
+::res://resources/::1679332090
+::res://resources/animations/::1679332090
 ::res://resources/fonts/::1679331850
 ::res://resources/images/::1679332065
 ::res://resources/themes/::1679331860
-::res://scenes/::1679331830
+::res://scenes/::1679334463
+main.tscn::PackedScene::7875648282012487267::1679334463::0::1::::<><>::uid://dbyqqjm6xqy8h<>res://scenes/Player.gd
+Player.gd::GDScript::-1::1679334463::0::1::::<>CharacterBody2D<>::
