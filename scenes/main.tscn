@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt4xpvnj23kue"]
+[gd_scene load_steps=5 format=3 uid="uid://3cyyxuum5qkw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_cu8gd"]
 [ext_resource type="Texture2D" uid="uid://dbyqqjm6xqy8h" path="res://icon.svg" id="1_ohyqu"]
-[ext_resource type="PackedScene" uid="uid://cs8sfu7xg4qbp" path="res://scenes/player.tscn" id="2_pcwyn"]
+[ext_resource type="PackedScene" uid="uid://cs8sfu7xg4qbp" path="res://scenes/Player.tscn" id="2_pcwyn"]
 [ext_resource type="PackedScene" uid="uid://1rsjd4d8tfpq" path="res://scenes/collectable.tscn" id="4_roa2v"]
 
 [node name="Main" type="Node2D"]
