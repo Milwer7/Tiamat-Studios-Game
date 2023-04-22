@@ -5,16 +5,15 @@ extends Node2D
 @onready var markers = $Markers
 
 func _ready():
-	
-#	if is_multiplayer_authority():
-		Game.players.sort()
+	Game.players.sort()
+
+	for i in Game.players.size():
+		var id = Game.players[i]
+		var player : Player = player_scene.instantiate()
+		var marker = markers.get_child(i)
 		
-		for i in Game.players.size():
-			var id = Game.players[i]
-			var player : Player = player_scene.instantiate()
-			var marker = markers.get_child(i)
-			
-			player.name = str(id)
-			player.global_position = marker.global_position
-			players.add_child(player)
-			player.init(id)
+		player.name = str(id)
+		player.global_position = marker.global_position
+		players.add_child(player)
+		player.init(id)
+

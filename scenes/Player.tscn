@@ -1,12 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpv1rmseqmyog"]
+[gd_scene load_steps=6 format=3 uid="uid://cs8sfu7xg4qbp"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_g708o"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_jd037"]
 [ext_resource type="Texture2D" uid="uid://dbyqqjm6xqy8h" path="res://icon.svg" id="2_o4b0t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y08x6"]
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_g708o")
+[sub_resource type="CircleShape2D" id="CircleShape2D_rfwvt"]
+radius = 74.0608
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_njru8"]
+properties/0/path = NodePath(".:points")
+properties/0/spawn = true
+properties/0/sync = true
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_jd037")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
@@ -15,3 +23,22 @@ shape = SubResource("CapsuleShape2D_y08x6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_o4b0t")
+
+[node name="CollectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
+shape = SubResource("CircleShape2D_rfwvt")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 1.0
+replication_config = SubResource("SceneReplicationConfig_njru8")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -8.0
+offset_top = -97.0
+offset_right = 3.0
+offset_bottom = -71.0
+text = "0"
+
+[connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
+[connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]
