@@ -29,7 +29,7 @@ func _ready():
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	start.show()
 	pending.hide()
-	user.text = OS.get_environment("USERNAME")
+	user.text = OS.get_environment("USERNAME") + str(randi() % 1000)
 	
 	go.pressed.connect(_on_go_pressed)
 	
