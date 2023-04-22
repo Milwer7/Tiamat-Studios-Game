@@ -1,27 +1,30 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkha1nx3t7si2"]
 
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_cu8gd"]
 [ext_resource type="Texture2D" uid="uid://dbyqqjm6xqy8h" path="res://icon.svg" id="1_ohyqu"]
-[ext_resource type="Script" path="res://scenes/Player.gd" id="2_fd0y1"]
+[ext_resource type="PackedScene" uid="uid://cpv1rmseqmyog" path="res://scenes/Player.tscn" id="2_dasxc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2qj32"]
+[node name="Main" type="Node2D"]
+script = ExtResource("1_cu8gd")
+player_scene = ExtResource("2_dasxc")
 
-[node name="Main" type="Node"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(581.75, 332)
 scale = Vector2(8.98828, 5.125)
 texture = ExtResource("1_ohyqu")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(321, 113)
-script = ExtResource("2_fd0y1")
-metadata/_edit_group_ = true
+[node name="Players" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_ohyqu")
+[node name="Markers" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-scale = Vector2(3, 3)
-shape = SubResource("CircleShape2D_2qj32")
+[node name="Player1Spawn" type="Marker2D" parent="Markers"]
+position = Vector2(138, 259)
+gizmo_extents = 36.0
+
+[node name="Player2Spawn" type="Marker2D" parent="Markers"]
+position = Vector2(982, 260)
+gizmo_extents = 36.0
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("../Players")
