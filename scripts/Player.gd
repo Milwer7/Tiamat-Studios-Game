@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 var move_input = 0
 
+
 func init(id):
 	set_multiplayer_authority(id)
 	name = str(id)
@@ -20,13 +21,13 @@ func move_character(delta) -> void:
 		velocity.y = move_toward(velocity.y, move_input.y * speed, acceleration * delta)
 		move_and_slide()
 		
-		rpc("send_data")
+		rpc("send_data", global_position, velocity, move_input)
 
 func _physics_process(delta) -> void:
 	move_character(delta) # Moving the character
 
 @rpc("unreliable_ordered")
-func send_data(pos: Vector2, vel: Vector2, mi: float) -> void:
+func send_data(pos: Vector2, vel: Vector2, mi: Vector2) -> void:
 	global_position = lerp(global_position, pos, 0.5)
 	velocity = lerp(velocity, vel, 0.5)
 	move_input = mi
