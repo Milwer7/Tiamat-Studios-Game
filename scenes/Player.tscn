@@ -1,23 +1,181 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs8sfu7xg4qbp"]
+[gd_scene load_steps=17 format=3 uid="uid://cs8sfu7xg4qbp"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jd037"]
-[ext_resource type="Texture2D" uid="uid://dbyqqjm6xqy8h" path="res://icon.svg" id="2_o4b0t"]
+[ext_resource type="Texture2D" uid="uid://cmym3bta3vwig" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Black/Gunner_Black_Idle.png" id="2_t4fu1"]
+[ext_resource type="Texture2D" uid="uid://b43fdd43o7pqw" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Black/Gunner_Black_Run.png" id="3_5rw1f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y08x6"]
+radius = 3.33333
+height = 6.66667
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rfwvt"]
-radius = 74.0608
+radius = 33.0151
+
+[sub_resource type="Animation" id="Animation_y0e7v"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_t4fu1")]
+}
+
+[sub_resource type="Animation" id="Animation_gnpru"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_t4fu1")]
+}
+
+[sub_resource type="Animation" id="Animation_xay08"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_5rw1f")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43vc3"]
+_data = {
+"RESET": SubResource("Animation_gnpru"),
+"idle": SubResource("Animation_y0e7v"),
+"run": SubResource("Animation_xay08")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hbxn3"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qg45f"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u0hqq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6d2e8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i26dm"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_om21u"]
+states/End/position = Vector2(763, 102)
+states/Start/position = Vector2(267, 102)
+states/idle/node = SubResource("AnimationNodeAnimation_hbxn3")
+states/idle/position = Vector2(372, 67)
+states/run/node = SubResource("AnimationNodeAnimation_qg45f")
+states/run/position = Vector2(540, 102)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_u0hqq"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_6d2e8"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_i26dm")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_mmd1w"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_jd037")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
+position = Vector2(-2, 10)
 scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_y08x6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_o4b0t")
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+texture = ExtResource("2_t4fu1")
+hframes = 5
 
 [node name="CollectionArea" type="Area2D" parent="."]
 
@@ -46,6 +204,16 @@ text = "Points: 0
 
 [node name="CharacterCamera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_43vc3")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_om21u")
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mmd1w")
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]

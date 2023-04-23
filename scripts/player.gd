@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
-@export var speed = 300
+const speed = 300
 @export var acceleration = 4000
 @export var backpack_max_size = 10
 @export var backpack_size = 0
@@ -11,22 +11,30 @@ extends CharacterBody2D
 @onready var deposit_delay = $depositDelay
 @onready var label_2 = $Label2
 @onready var character_camera = $CharacterCamera
+@onready var animation_player = $AnimationPlayer
+@onready var animation_tree = $AnimationTree
+@onready var playback = animation_tree.get("parameters/playback")
+@onready var pivot = $Pivot
 
 var is_on_deposit_zone = false
-var move_input = 0
+var move_input = Vector2(0,0)
 var collectables : Array = []
 var collected : Array = []
 
 signal scores_updated
 
 func init(id):
+	
 	set_multiplayer_authority(id)
 	name = str(id)
 	if is_multiplayer_authority():
 		character_camera.make_current()
+	animation_tree.active = true
 
 func _ready_():
 	deposit_delay.time_left = 0
+	
+	
 
 func move_character(delta) -> void:
 		# Moves the character based on the input on both axis
@@ -37,6 +45,7 @@ func move_character(delta) -> void:
 		move_and_slide()
 		
 		rpc("send_data", global_position, velocity, move_input)
+
 
 func _physics_process(delta) -> void:
 	if is_multiplayer_authority():
@@ -52,6 +61,14 @@ func _physics_process(delta) -> void:
 		
 		if is_on_deposit_zone and backpack_size > 0 and deposit_delay.time_left == 0:
 			deposit()
+		
+		#Animation
+	if move_input.x != 0:
+		pivot.scale.x = sign(move_input.x)
+	if abs(velocity.x) >= 10 or abs(velocity.y) >= 10 or move_input != Vector2.ZERO:
+		playback.travel("run")
+	else:
+		playback.travel("idle")
 
 func deposit():
 	deposit_delay.start()
