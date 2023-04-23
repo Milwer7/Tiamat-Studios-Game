@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cs8sfu7xg4qbp"]
+[gd_scene load_steps=18 format=3 uid="uid://cs8sfu7xg4qbp"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jd037"]
 [ext_resource type="Texture2D" uid="uid://cmym3bta3vwig" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Black/Gunner_Black_Idle.png" id="2_t4fu1"]
-[ext_resource type="Texture2D" uid="uid://b43fdd43o7pqw" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Black/Gunner_Black_Run.png" id="3_5rw1f"]
+[ext_resource type="Texture2D" uid="uid://c73jrc30lth8m" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Red/Gunner_Red_Idle.png" id="3_a2g68"]
+[ext_resource type="Texture2D" uid="uid://4047g70hab2p" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Red/Gunner_Red_Run.png" id="4_auljk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y08x6"]
 radius = 3.33333
@@ -88,7 +89,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_t4fu1")]
+"values": [ExtResource("3_a2g68")]
 }
 
 [sub_resource type="Animation" id="Animation_xay08"]
@@ -129,7 +130,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_5rw1f")]
+"values": [ExtResource("4_auljk")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_43vc3"]
@@ -167,6 +168,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 script = ExtResource("1_jd037")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-2, 10)
 scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_y08x6")
@@ -176,28 +178,30 @@ shape = SubResource("CapsuleShape2D_y08x6")
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 texture = ExtResource("2_t4fu1")
 hframes = 5
-frame = 3
 
 [node name="CollectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
+visible = false
 shape = SubResource("CircleShape2D_rfwvt")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -37.0
-offset_top = -63.0
-offset_right = 77.0
-offset_bottom = -26.0
+offset_left = -87.0
+offset_top = -111.0
+offset_right = 27.0
+offset_bottom = -74.0
+scale = Vector2(2, 2)
 text = "Backpack: 0"
 
 [node name="depositDelay" type="Timer" parent="."]
 one_shot = true
 
 [node name="Label2" type="Label" parent="."]
-offset_left = -30.0
-offset_top = -88.0
-offset_right = 57.0
-offset_bottom = -61.0
+offset_left = -65.0
+offset_top = -144.0
+offset_right = 22.0
+offset_bottom = -117.0
+scale = Vector2(2, 2)
 text = "Points: 0
 "
 
@@ -212,7 +216,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_om21u")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mmd1w")
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
