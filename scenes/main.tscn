@@ -4935,7 +4935,6 @@ player_scene = ExtResource("2_pcwyn")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(6.10352e-05, 3.05176e-05)
-scale = Vector2(1, 1)
 tile_set = SubResource("TileSet_nxe6p")
 cell_quadrant_size = 32
 format = 2

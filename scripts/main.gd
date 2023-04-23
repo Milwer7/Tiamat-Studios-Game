@@ -15,7 +15,7 @@ func _ready():
 		
 		player.name = str(id)
 		player.global_position = marker.global_position
-		player.scale = Vector2(0.3,0.3)
+		player.scale = Vector2(0.8,0.8)
 		players.add_child(player)
 		player.scores_updated.connect(on_scores_updated)
 		player.init(id)

@@ -11,10 +11,8 @@ height = 6.66667
 [sub_resource type="CircleShape2D" id="CircleShape2D_rfwvt"]
 radius = 33.0151
 
-[sub_resource type="Animation" id="Animation_y0e7v"]
-resource_name = "idle"
-length = 0.5
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_gnpru"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -22,10 +20,10 @@ tracks/0/path = NodePath("Pivot/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -52,8 +50,10 @@ tracks/2/keys = {
 "values": [ExtResource("2_t4fu1")]
 }
 
-[sub_resource type="Animation" id="Animation_gnpru"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_y0e7v"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -61,10 +61,10 @@ tracks/0/path = NodePath("Pivot/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 2, 3, 4]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -176,6 +176,7 @@ shape = SubResource("CapsuleShape2D_y08x6")
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 texture = ExtResource("2_t4fu1")
 hframes = 5
+frame = 3
 
 [node name="CollectionArea" type="Area2D" parent="."]
 
@@ -183,22 +184,20 @@ hframes = 5
 shape = SubResource("CircleShape2D_rfwvt")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -87.0
-offset_top = -111.0
-offset_right = 27.0
-offset_bottom = -74.0
-scale = Vector2(2, 2)
+offset_left = -37.0
+offset_top = -63.0
+offset_right = 77.0
+offset_bottom = -26.0
 text = "Backpack: 0"
 
 [node name="depositDelay" type="Timer" parent="."]
 one_shot = true
 
 [node name="Label2" type="Label" parent="."]
-offset_left = -65.0
-offset_top = -144.0
-offset_right = 22.0
-offset_bottom = -117.0
-scale = Vector2(2, 2)
+offset_left = -30.0
+offset_top = -88.0
+offset_right = 57.0
+offset_bottom = -61.0
 text = "Points: 0
 "
 
@@ -213,6 +212,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_om21u")
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mmd1w")
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
