@@ -11,19 +11,18 @@ extends CharacterBody2D
 @onready var deposit_delay = $depositDelay
 @onready var label_2 = $Label2
 @onready var character_camera = $CharacterCamera
-@onready var scores = $CharacterCamera/Scores
 
 var is_on_deposit_zone = false
 var move_input = 0
 var collectables : Array = []
 var collected : Array = []
 
+signal scores_updated
 
 func init(id):
 	set_multiplayer_authority(id)
 	name = str(id)
 	if is_multiplayer_authority():
-		scores.visible = true
 		character_camera.make_current()
 
 func _ready_():
@@ -65,7 +64,7 @@ func deposit():
 @rpc("call_local", "reliable")
 func send_points(value):
 	points = value
-#	scores.update_tables() # TODO: Fix scores
+	scores_updated.emit() # TODO: Fix scores
 	label_2.text = "Points: " + str(points)
 
 @rpc("call_local", "reliable")
