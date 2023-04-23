@@ -16,4 +16,5 @@ func _ready():
 		player.global_position = marker.global_position
 		players.add_child(player)
 		player.init(id)
-
+		
+		

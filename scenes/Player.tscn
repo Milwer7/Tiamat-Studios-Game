@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs8sfu7xg4qbp"]
+[gd_scene load_steps=7 format=3 uid="uid://cs8sfu7xg4qbp"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jd037"]
 [ext_resource type="Texture2D" uid="uid://dbyqqjm6xqy8h" path="res://icon.svg" id="2_o4b0t"]
+[ext_resource type="PackedScene" uid="uid://b7uetxanp4guo" path="res://scenes/Scores.tscn" id="3_oeh6k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y08x6"]
 
@@ -34,11 +35,32 @@ replication_interval = 1.0
 replication_config = SubResource("SceneReplicationConfig_njru8")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -8.0
-offset_top = -97.0
-offset_right = 3.0
-offset_bottom = -71.0
-text = "0"
+offset_left = -42.0
+offset_top = -90.0
+offset_right = 49.0
+offset_bottom = -64.0
+text = "Backpack: 0"
+
+[node name="depositDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -32.0
+offset_top = -117.0
+offset_right = 41.0
+offset_bottom = -91.0
+text = "Points: 0
+"
+
+[node name="CharacterCamera" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+
+[node name="Scores" parent="CharacterCamera" instance=ExtResource("3_oeh6k")]
+visible = false
+offset_left = -385.0
+offset_top = -217.0
+offset_right = -312.0
+offset_bottom = -161.0
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]

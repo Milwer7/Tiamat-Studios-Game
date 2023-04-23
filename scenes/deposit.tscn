@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dixuesvp6c3gp"]
+
+[ext_resource type="Texture2D" uid="uid://dbyqqjm6xqy8h" path="res://icon.svg" id="1_2qsdk"]
+[ext_resource type="Script" path="res://scripts/deposit.gd" id="1_iefww"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bd5fd"]
+size = Vector2(128, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8tj5"]
+radius = 115.27
+
+[node name="deposit" type="Area2D"]
+script = ExtResource("1_iefww")
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_bd5fd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_2qsdk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q8tj5")

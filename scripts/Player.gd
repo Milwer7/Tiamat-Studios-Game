@@ -8,19 +8,26 @@ extends CharacterBody2D
 @export var backpack_size = 0
 @export var points = 0
 @onready var label = $Label
+@onready var deposit_delay = $depositDelay
+@onready var label_2 = $Label2
+@onready var character_camera = $CharacterCamera
+@onready var scores = $CharacterCamera/Scores
 
-var tried_to_pick = false
-var on_pickable_area = false
+var is_on_deposit_zone = false
 var move_input = 0
 var collectables : Array = []
+var collected : Array = []
 
-
-signal bla(a, b)
 
 func init(id):
 	set_multiplayer_authority(id)
 	name = str(id)
-	
+	if is_multiplayer_authority():
+		scores.visible = true
+		character_camera.make_current()
+
+func _ready_():
+	deposit_delay.time_left = 0
 
 func move_character(delta) -> void:
 		# Moves the character based on the input on both axis
@@ -37,18 +44,34 @@ func _physics_process(delta) -> void:
 		move_character(delta) # Moving the character
 		
 		if Input.is_action_just_pressed("pick"):
-			bla.emit(1, 2)
 			if collectables.size() > 0:
 				var first_collectable = collectables.pop_front()
-				points += first_collectable.value
-				send_points.rpc(points)
+				collected.append(first_collectable.value)
 				backpack_size += 1
+				send_backpack.rpc(backpack_size)
 				first_collectable.destroy.rpc()
+		
+		if is_on_deposit_zone and backpack_size > 0 and deposit_delay.time_left == 0:
+			deposit()
+
+func deposit():
+	deposit_delay.start()
+	var first_collected = collected.pop_front()
+	points += first_collected
+	backpack_size -= 1
+	send_points.rpc(points)
+	send_backpack.rpc(backpack_size)
 
 @rpc("call_local", "reliable")
 func send_points(value):
 	points = value
-	label.text = str(points)
+#	scores.update_tables() # TODO: Fix scores
+	label_2.text = "Points: " + str(points)
+
+@rpc("call_local", "reliable")
+func send_backpack(value):
+	backpack_size = value
+	label.text = "Backpack: " + str(backpack_size)
 
 @rpc("unreliable_ordered")
 func send_data(pos: Vector2, vel: Vector2, mi: Vector2) -> void:
@@ -56,23 +79,17 @@ func send_data(pos: Vector2, vel: Vector2, mi: Vector2) -> void:
 	velocity = lerp(velocity, vel, 0.5)
 	move_input = mi
 
-@rpc("reliable", "call_local")
-func add_to_backpack(value):
-	if is_multiplayer_authority():
-		points += value # temporal
-		backpack_size += 1
-		tried_to_pick = false
-
-
 
 func _on_collection_area_area_entered(body):
 	if body is Collectable:
 		var collectable = body as Collectable
 		collectables.append(collectable)
-
-
+	if body is Deposit:
+		is_on_deposit_zone = true
 
 func _on_collection_area_area_exited(body):
 	if body is Collectable:
 		var collectable = body as Collectable
 		collectables.erase(collectable)
+	if body is Deposit:
+		is_on_deposit_zone = false

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt4xpvnj23kue"]
+[gd_scene load_steps=6 format=3 uid="uid://bt4xpvnj23kue"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_cu8gd"]
 [ext_resource type="Texture2D" uid="uid://dbyqqjm6xqy8h" path="res://icon.svg" id="1_ohyqu"]
-[ext_resource type="PackedScene" uid="uid://cs8sfu7xg4qbp" path="res://scenes/player.tscn" id="2_pcwyn"]
+[ext_resource type="PackedScene" uid="uid://cs8sfu7xg4qbp" path="res://scenes/Player.tscn" id="2_pcwyn"]
 [ext_resource type="PackedScene" uid="uid://1rsjd4d8tfpq" path="res://scenes/collectable.tscn" id="4_roa2v"]
+[ext_resource type="PackedScene" uid="uid://dixuesvp6c3gp" path="res://scenes/deposit.tscn" id="5_22m16"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_cu8gd")
@@ -27,13 +28,16 @@ gizmo_extents = 36.0
 position = Vector2(982, 260)
 gizmo_extents = 36.0
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Interactive" type="Node2D" parent="."]
 
-[node name="collectable" parent="Node2D" instance=ExtResource("4_roa2v")]
+[node name="collectable" parent="Interactive" instance=ExtResource("4_roa2v")]
 position = Vector2(557, 299)
 
-[node name="collectable2" parent="Node2D" instance=ExtResource("4_roa2v")]
+[node name="collectable2" parent="Interactive" instance=ExtResource("4_roa2v")]
 position = Vector2(557, 299)
+
+[node name="deposit" parent="Interactive" instance=ExtResource("5_22m16")]
+position = Vector2(232, 562)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("../Players")
