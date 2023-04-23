@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dulc5e1gagkko"]
 
-[ext_resource type="Texture2D" uid="uid://dbyqqjm6xqy8h" path="res://icon.svg" id="1_2qsdk"]
 [ext_resource type="Script" path="res://scripts/deposit.gd" id="1_iefww"]
+[ext_resource type="Texture2D" uid="uid://b5mo2xjohcnn" path="res://chest.png" id="2_x3fvh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd5fd"]
 size = Vector2(128, 128)
@@ -18,7 +18,9 @@ script = ExtResource("1_iefww")
 shape = SubResource("RectangleShape2D_bd5fd")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-texture = ExtResource("1_2qsdk")
+position = Vector2(-0.500006, -3.8147e-06)
+scale = Vector2(0.15995, 0.219931)
+texture = ExtResource("2_x3fvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_q8tj5")

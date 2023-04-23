@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://1rsjd4d8tfpq"]
 
 [ext_resource type="Script" path="res://scripts/collectable.gd" id="1_407ee"]
-[ext_resource type="Texture2D" uid="uid://dbyqqjm6xqy8h" path="res://icon.svg" id="2_554y7"]
+[ext_resource type="Texture2D" uid="uid://c14q3gf5p5tqg" path="res://diamante.jpg" id="2_bh6ye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkxny"]
 
@@ -9,8 +9,11 @@
 script = ExtResource("1_407ee")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_554y7")
+position = Vector2(0.499997, -1.00001)
+scale = Vector2(0.233333, 0.346821)
+texture = ExtResource("2_bh6ye")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_pkxny")

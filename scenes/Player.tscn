@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://4047g70hab2p" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Red/Gunner_Red_Run.png" id="4_auljk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y08x6"]
-radius = 3.33333
-height = 6.66667
+radius = 3.0
+height = 10.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rfwvt"]
 radius = 33.0151
@@ -168,8 +168,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 script = ExtResource("1_jd037")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-2, 10)
+position = Vector2(0, -1)
 scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_y08x6")
 
