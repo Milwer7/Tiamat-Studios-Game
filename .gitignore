@@ -13,3 +13,6 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+.godot/uid_cache.bin
+.godot/editor/project_metadata.cfg
+.godot/editor/filesystem_cache8
