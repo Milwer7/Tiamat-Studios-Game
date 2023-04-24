@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmkstpk1a00ln"]
+
+[ext_resource type="Texture2D" uid="uid://cr37a56c8igmu" path="res://assets/war-pixel-art-2d-game-backgrounds/PNG/War4/0.png" id="1_na25t"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_wqq8i"]
+[ext_resource type="FontFile" uid="uid://cuhfkkov4magk" path="res://assets/XTypewriter_Font_0_80/TrueType (.ttf)/XTypewriter-Bold.ttf" id="2_fmx3d"]
+[ext_resource type="FontFile" uid="uid://c8hxqaf6e2q73" path="res://assets/XTypewriter_Font_0_80/TrueType (.ttf)/XTypewriter-Regular.ttf" id="3_p36eq"]
+
+[node name="start_menu" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.769
+offset_bottom = 150.688
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wqq8i")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+texture = ExtResource("1_na25t")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 178.0
+offset_right = 656.0
+offset_bottom = 239.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fmx3d")
+theme_override_font_sizes/font_size = 50
+text = "Tiamat"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 254.0
+offset_right = 694.0
+offset_bottom = 303.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_p36eq")
+text = "Press Enter"
+horizontal_alignment = 1

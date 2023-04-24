@@ -185,22 +185,22 @@ visible = false
 shape = SubResource("CircleShape2D_rfwvt")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -87.0
-offset_top = -111.0
-offset_right = 27.0
-offset_bottom = -74.0
-scale = Vector2(2, 2)
+offset_left = -48.0
+offset_top = 19.0
+offset_right = 56.0
+offset_bottom = 41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Backpack: 0"
 
 [node name="depositDelay" type="Timer" parent="."]
 one_shot = true
 
 [node name="Label2" type="Label" parent="."]
-offset_left = -65.0
-offset_top = -144.0
-offset_right = 22.0
-offset_bottom = -117.0
-scale = Vector2(2, 2)
+offset_left = -38.0
+offset_top = -40.0
+offset_right = 47.0
+offset_bottom = -18.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Points: 0
 "
 

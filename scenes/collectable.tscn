@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://1rsjd4d8tfpq"]
 
 [ext_resource type="Script" path="res://scripts/collectable.gd" id="1_407ee"]
-[ext_resource type="Texture2D" uid="uid://c14q3gf5p5tqg" path="res://diamante.jpg" id="2_bh6ye"]
+[ext_resource type="Texture2D" uid="uid://b66c6x4nvswgh" path="res://assets/Free 2D Animated Vector Game Character Sprites/Weapons/weaponR1.png" id="2_rdch8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkxny"]
 
@@ -9,9 +9,10 @@
 script = ExtResource("1_407ee")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.499997, -1.00001)
-scale = Vector2(0.233333, 0.346821)
-texture = ExtResource("2_bh6ye")
+position = Vector2(-4, -24)
+scale = Vector2(0.0918735, 0.0774184)
+texture = ExtResource("2_rdch8")
+offset = Vector2(0, -100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

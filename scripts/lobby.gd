@@ -77,6 +77,7 @@ func _add_player(name: String, id: int):
 	label.text = name
 	players.add_child(label)
 	Game.players.append(id)
+	Game.names.append(name)
 
 
 @rpc("any_peer", "reliable")

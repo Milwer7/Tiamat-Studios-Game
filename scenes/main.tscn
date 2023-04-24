@@ -4965,11 +4965,11 @@ gizmo_extents = 36.0
 [node name="Interactive" type="Node2D" parent="."]
 
 [node name="collectable" parent="Interactive" instance=ExtResource("4_roa2v")]
-position = Vector2(557, 269)
+position = Vector2(293, 175)
 scale = Vector2(0.3, 0.3)
 
 [node name="collectable2" parent="Interactive" instance=ExtResource("4_roa2v")]
-position = Vector2(557, 269)
+position = Vector2(290, 354)
 scale = Vector2(0.3, 0.3)
 
 [node name="deposit" parent="Interactive" instance=ExtResource("5_22m16")]
@@ -4980,9 +4980,31 @@ scale = Vector2(0.3, 0.3)
 position = Vector2(1164, 278)
 scale = Vector2(0.3, 0.3)
 
+[node name="collectable3" parent="Interactive" instance=ExtResource("4_roa2v")]
+position = Vector2(850, 174)
+scale = Vector2(0.3, 0.3)
+
+[node name="collectable4" parent="Interactive" instance=ExtResource("4_roa2v")]
+position = Vector2(559, 223)
+scale = Vector2(0.3, 0.3)
+value = 10
+
+[node name="collectable5" parent="Interactive" instance=ExtResource("4_roa2v")]
+position = Vector2(558, 292)
+scale = Vector2(0.3, 0.3)
+value = 10
+
+[node name="collectable6" parent="Interactive" instance=ExtResource("4_roa2v")]
+position = Vector2(851, 347)
+scale = Vector2(0.3, 0.3)
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("../Players")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Scores" parent="CanvasLayer" instance=ExtResource("6_ck8xy")]
+offset_left = 31.0
+offset_top = 27.0
+offset_right = 88.0
+offset_bottom = 95.0

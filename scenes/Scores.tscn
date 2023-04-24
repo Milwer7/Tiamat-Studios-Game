@@ -1,14 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7uetxanp4guo"]
+[gd_scene load_steps=3 format=3 uid="uid://b7uetxanp4guo"]
 
 [ext_resource type="Script" path="res://scripts/scores.gd" id="1_gqvgy"]
+[ext_resource type="FontFile" path="res://assets/XTypewriter_Font_0_80/OpenType (.otf)/XTypewriter-Regular.otf" id="2_uwwf6"]
 
 [node name="Scores" type="VBoxContainer"]
 script = ExtResource("1_gqvgy")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_uwwf6")
+text = "Scores"
+
 [node name="PlayerPoints" type="Label" parent="."]
 layout_mode = 2
-text = "0"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_uwwf6")
 
 [node name="Player2Points" type="Label" parent="."]
 layout_mode = 2
-text = "0"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_uwwf6")

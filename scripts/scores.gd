@@ -7,6 +7,6 @@ func update_tables():
 	var j = 0
 	for i in id_list:
 		var player = Game.player_nodes[i]
-		var label = self.get_child(j)
-		label.text = str(player.points)
+		var label = self.get_child(j+1)
+		label.text = (Game.names[j] + " Points: " + str(player.points))
 		j += 1
