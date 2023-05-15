@@ -62,7 +62,8 @@ func _physics_process(delta) -> void:
 		if is_on_deposit_zone and backpack_size > 0 and deposit_delay.time_left == 0:
 			deposit()
 		
-		#Animation
+	#Animation
+	move_and_slide()
 	if move_input.x != 0:
 		pivot.scale.x = sign(move_input.x)
 	if abs(velocity.x) >= 10 or abs(velocity.y) >= 10 or move_input != Vector2.ZERO:
