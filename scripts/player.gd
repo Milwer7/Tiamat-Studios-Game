@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
-const speed = 300
+const speed = 100
 @export var acceleration = 4000
 @export var backpack_max_size = 10
 @export var backpack_size = 0
@@ -17,6 +17,7 @@ const speed = 300
 @onready var pivot = $Pivot
 @onready var bullet_spawn = $Pivot/BulletSpawn
 
+var can_fire = 1
 var health = 20
 var is_on_deposit_zone = false
 var move_input = Vector2(0,0)
@@ -69,7 +70,18 @@ func _physics_process(delta) -> void:
 			deposit()
 		if Input.is_action_just_pressed("fire"):
 			#rpc("_fire")
-			self._fire.rpc() 
+			self._fire.rpc()
+# Obtener la posición global del cursor del mouse
+		var mousePosition: Vector2 = get_global_mouse_position()
+
+		# Calcular la dirección hacia el cursor del mouse
+		var direction: Vector2 = mousePosition - global_position
+
+		# Comprobar si la dirección está a la derecha o a la izquierda
+		if direction.x > 0:
+			pivot.scale.x = 1  # No se realiza rotación, el personaje mira hacia la derecha
+		else:
+			pivot.scale.x = -1  # Se rota 180 grados, el personaje mira hacia la izquierda 
 	#Animation
 	move_and_slide()
 	if move_input.x != 0:
@@ -121,13 +133,26 @@ func _on_collection_area_area_exited(body):
 
 @rpc("reliable","call_local")
 func _fire():
-	var bullet = Bullet.instantiate()
-	var id = multiplayer.get_remote_sender_id()
-	bullet.set_multiplayer_authority(id)
-	get_parent().add_child(bullet)
-	bullet.global_position = bullet_spawn.global_position
-	if pivot.scale.x == -1:
-		bullet.rotation = PI
+	if can_fire:
+		var bullet = Bullet.instantiate()
+		var id = multiplayer.get_remote_sender_id()
+		bullet.set_multiplayer_authority(id)
+		get_parent().add_child(bullet)
+		bullet.global_position = bullet_spawn.global_position
+		# Obtener la posición global del cursor del mouse
+		var mouse_position: Vector2 = get_global_mouse_position()
+		# Calcular el ángulo entre la posición del objeto y la posición del cursor del mouse
+		var object_position: Vector2 = bullet.global_position
+		var angle: float = atan2(mouse_position.y - object_position.y, mouse_position.x - object_position.x)
+		# Orientar el objeto hacia la posición del cursor del mouse
+		bullet.rotation = angle
+		can_fire = 0
+		var timer = Timer.new()
+		timer.connect("timeout",do_this)
+		timer.wait_time = 0.5
+		timer.one_shot = true
+		add_child(timer)
+		timer.start()
 		
 @rpc("reliable","any_peer")		
 func on_hit():
@@ -138,3 +163,6 @@ func on_hit():
 @rpc("call_local", "reliable", "any_peer")
 func destroy():
 	queue_free()
+
+func do_this():
+	can_fire = 1
