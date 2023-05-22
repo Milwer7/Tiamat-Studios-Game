@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddkvy3llinwcl"]
+
+[ext_resource type="Script" path="res://scenes/bullet.gd" id="1_w3v3w"]
+[ext_resource type="Texture2D" uid="uid://cjq5p65ye6l0o" path="res://assets/TeamGunner_By_SecretHideout_060519/EXTRAS/SpongeBullet.png" id="2_syp6q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_si25i"]
+radius = 1.0
+height = 4.0
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_w3v3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_si25i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_syp6q")

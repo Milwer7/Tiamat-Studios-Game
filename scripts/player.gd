@@ -15,11 +15,17 @@ const speed = 300
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $Pivot
+@onready var bullet_spawn = $Pivot/BulletSpawn
 
+var health = 20
 var is_on_deposit_zone = false
 var move_input = Vector2(0,0)
 var collectables : Array = []
 var collected : Array = []
+
+#export(PackedScene) var Bullet
+#var Bullet = PackedScene.new()
+var Bullet = preload("res://scenes/bullet.tscn")
 
 signal scores_updated
 
@@ -61,7 +67,9 @@ func _physics_process(delta) -> void:
 		
 		if is_on_deposit_zone and backpack_size > 0 and deposit_delay.time_left == 0:
 			deposit()
-		
+		if Input.is_action_just_pressed("fire"):
+			#rpc("_fire")
+			self._fire.rpc() 
 	#Animation
 	move_and_slide()
 	if move_input.x != 0:
@@ -110,3 +118,23 @@ func _on_collection_area_area_exited(body):
 		collectables.erase(collectable)
 	if body is Deposit:
 		is_on_deposit_zone = false
+
+@rpc("reliable","call_local")
+func _fire():
+	var bullet = Bullet.instantiate()
+	var id = multiplayer.get_remote_sender_id()
+	bullet.set_multiplayer_authority(id)
+	get_parent().add_child(bullet)
+	bullet.global_position = bullet_spawn.global_position
+	if pivot.scale.x == -1:
+		bullet.rotation = PI
+		
+@rpc("reliable","any_peer")		
+func on_hit():
+	health -= 1
+	print(health)
+	if health <= 0:
+		destroy.rpc()
+@rpc("call_local", "reliable", "any_peer")
+func destroy():
+	queue_free()

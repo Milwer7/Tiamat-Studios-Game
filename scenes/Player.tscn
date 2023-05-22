@@ -178,6 +178,9 @@ shape = SubResource("CapsuleShape2D_y08x6")
 texture = ExtResource("2_t4fu1")
 hframes = 5
 
+[node name="BulletSpawn" type="Marker2D" parent="Pivot"]
+position = Vector2(15, -2.5)
+
 [node name="CollectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
