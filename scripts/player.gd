@@ -18,6 +18,8 @@ const speed = 100
 @onready var bullet_spawn = $Pivot/BulletSpawn
 @onready var progress_bar = $Pivot/ProgressBar
 @onready var respawn_time = $RespawnTime
+@onready var healing_ticks = $HealingTicks
+
 
 var is_dead = false
 var can_fire = 1
@@ -27,6 +29,7 @@ var move_input = Vector2(0,0)
 var collectables : Array = []
 var collected : Array = []
 var starting_point = Vector2.ZERO
+var on_healing_area = false
 
 #export(PackedScene) var Bullet
 #var Bullet = PackedScene.new()
@@ -123,12 +126,16 @@ func send_data(pos: Vector2, vel: Vector2, mi: Vector2) -> void:
 	move_input = mi
 
 
-func _on_collection_area_area_entered(body):
-	if body is Collectable:
-		var collectable = body as Collectable
+func _on_collection_area_area_entered(area):
+	if area is Collectable:
+		var collectable = area as Collectable
 		collectables.append(collectable)
-	if body is Deposit:
+	if area is Deposit:
 		is_on_deposit_zone = true
+	if area is HealingZone:
+		var healingZone = area as HealingZone
+		on_healing_area = true
+		heal_player()
 
 func _on_collection_area_area_exited(body):
 	if body is Collectable:
@@ -136,6 +143,8 @@ func _on_collection_area_area_exited(body):
 		collectables.erase(collectable)
 	if body is Deposit:
 		is_on_deposit_zone = false
+	if body is HealingZone:
+		on_healing_area = false
 
 @rpc("reliable","call_local")
 func _fire():
@@ -159,13 +168,14 @@ func _fire():
 		timer.one_shot = true
 		add_child(timer)
 		timer.start()
-		
+
 @rpc("reliable","any_peer")		
 func on_hit():
 	health -= 1
 	progress_bar.value = health * 5
 	if health <= 0:
 		destroy.rpc()
+
 @rpc("call_local", "reliable", "any_peer")
 func destroy():
 	respawn_time.start()
@@ -181,3 +191,13 @@ func _on_respawn_time_timeout():
 	self.visible = true
 	self.health = 20
 	progress_bar.value = 100
+
+func heal_player():
+	if on_healing_area:
+		health = min(20, health + 2)
+		progress_bar.value = health * 5
+		healing_ticks.start()
+
+func _on_healing_ticks_timeout():
+	if on_healing_area:
+		heal_player()

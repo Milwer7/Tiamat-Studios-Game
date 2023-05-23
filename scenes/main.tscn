@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://3cyyxuum5qkw"]
+[gd_scene load_steps=11 format=3 uid="uid://3cyyxuum5qkw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_cu8gd"]
 [ext_resource type="PackedScene" uid="uid://cs8sfu7xg4qbp" path="res://scenes/Player.tscn" id="2_pcwyn"]
 [ext_resource type="PackedScene" uid="uid://1rsjd4d8tfpq" path="res://scenes/collectable.tscn" id="4_roa2v"]
 [ext_resource type="PackedScene" uid="uid://dulc5e1gagkko" path="res://scenes/deposit.tscn" id="5_22m16"]
 [ext_resource type="PackedScene" uid="uid://b7uetxanp4guo" path="res://scenes/Scores.tscn" id="6_ck8xy"]
+[ext_resource type="PackedScene" uid="uid://dh5mejde0o6uv" path="res://scenes/healing_zone.tscn" id="6_jw0bp"]
 [ext_resource type="Texture2D" uid="uid://cjrkqvnq413sk" path="res://assets_map/Dungeon_Tileset.png" id="7_8ao7u"]
 [ext_resource type="PackedScene" uid="uid://cjlgrsdprjitq" path="res://scenes/crosshair.tscn" id="7_y0vaw"]
 
@@ -4998,6 +4999,10 @@ value = 10
 [node name="collectable6" parent="Interactive" instance=ExtResource("4_roa2v")]
 position = Vector2(851, 347)
 scale = Vector2(0.3, 0.3)
+
+[node name="HealingZone" parent="Interactive" instance=ExtResource("6_jw0bp")]
+position = Vector2(141, 261)
+scale = Vector2(3, 3)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("../Players")

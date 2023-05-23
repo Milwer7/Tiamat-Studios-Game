@@ -175,7 +175,7 @@ script = ExtResource("1_jd037")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 shape = SubResource("CapsuleShape2D_y08x6")
 
 [node name="Pivot" type="Node2D" parent="."]
@@ -213,9 +213,6 @@ offset_bottom = 41.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Backpack: 0"
 
-[node name="depositDelay" type="Timer" parent="."]
-one_shot = true
-
 [node name="Label2" type="Label" parent="."]
 offset_left = -38.0
 offset_top = -40.0
@@ -238,10 +235,18 @@ tree_root = SubResource("AnimationNodeStateMachine_om21u")
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mmd1w")
 
+[node name="depositDelay" type="Timer" parent="."]
+one_shot = true
+
 [node name="RespawnTime" type="Timer" parent="."]
 wait_time = 3.0
+one_shot = true
+
+[node name="HealingTicks" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]
 [connection signal="timeout" from="RespawnTime" to="." method="_on_respawn_time_timeout"]
+[connection signal="timeout" from="HealingTicks" to="." method="_on_healing_ticks_timeout"]

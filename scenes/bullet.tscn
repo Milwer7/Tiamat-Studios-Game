@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddkvy3llinwcl"]
 
-[ext_resource type="Script" path="res://scenes/bullet.gd" id="1_w3v3w"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_w3v3w"]
 [ext_resource type="Texture2D" uid="uid://cjq5p65ye6l0o" path="res://assets/TeamGunner_By_SecretHideout_060519/EXTRAS/SpongeBullet.png" id="2_syp6q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_si25i"]
