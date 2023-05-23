@@ -16,13 +16,17 @@ const speed = 100
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $Pivot
 @onready var bullet_spawn = $Pivot/BulletSpawn
+@onready var progress_bar = $Pivot/ProgressBar
+@onready var respawn_time = $RespawnTime
 
+var is_dead = false
 var can_fire = 1
 var health = 20
 var is_on_deposit_zone = false
 var move_input = Vector2(0,0)
 var collectables : Array = []
 var collected : Array = []
+var starting_point = Vector2.ZERO
 
 #export(PackedScene) var Bullet
 #var Bullet = PackedScene.new()
@@ -34,8 +38,10 @@ func init(id):
 	
 	set_multiplayer_authority(id)
 	name = str(id)
+	starting_point = global_position
 	if is_multiplayer_authority():
 		character_camera.make_current()
+		progress_bar.visible = true
 	animation_tree.active = true
 
 func _ready_():
@@ -55,7 +61,7 @@ func move_character(delta) -> void:
 
 
 func _physics_process(delta) -> void:
-	if is_multiplayer_authority():
+	if is_multiplayer_authority() and not is_dead:
 		move_character(delta) # Moving the character
 		
 		if Input.is_action_just_pressed("pick"):
@@ -157,12 +163,21 @@ func _fire():
 @rpc("reliable","any_peer")		
 func on_hit():
 	health -= 1
-	print(health)
+	progress_bar.value = health * 5
 	if health <= 0:
 		destroy.rpc()
 @rpc("call_local", "reliable", "any_peer")
 func destroy():
-	queue_free()
+	respawn_time.start()
+	is_dead = true
+	self.visible = false
 
 func do_this():
 	can_fire = 1
+	
+func _on_respawn_time_timeout():
+	is_dead = false
+	position = starting_point
+	self.visible = true
+	self.health = 20
+	progress_bar.value = 100

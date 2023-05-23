@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cs8sfu7xg4qbp"]
+[gd_scene load_steps=20 format=3 uid="uid://cs8sfu7xg4qbp"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jd037"]
 [ext_resource type="Texture2D" uid="uid://cmym3bta3vwig" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Black/Gunner_Black_Idle.png" id="2_t4fu1"]
@@ -8,6 +8,12 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y08x6"]
 radius = 3.0
 height = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_we16m"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pdie"]
+bg_color = Color(0.427451, 0.67451, 0.352941, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rfwvt"]
 radius = 33.0151
@@ -181,6 +187,18 @@ hframes = 5
 [node name="BulletSpawn" type="Marker2D" parent="Pivot"]
 position = Vector2(15, -2.5)
 
+[node name="ProgressBar" type="ProgressBar" parent="Pivot"]
+visible = false
+offset_left = -20.0
+offset_top = -15.0
+offset_right = -16.0
+offset_bottom = 12.0
+theme_override_styles/background = SubResource("StyleBoxFlat_we16m")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3pdie")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
 [node name="CollectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
@@ -220,5 +238,10 @@ tree_root = SubResource("AnimationNodeStateMachine_om21u")
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mmd1w")
 
+[node name="RespawnTime" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]
+[connection signal="timeout" from="RespawnTime" to="." method="_on_respawn_time_timeout"]
