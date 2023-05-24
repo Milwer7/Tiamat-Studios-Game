@@ -4,6 +4,8 @@ extends Node2D
 @onready var players = $Players
 @onready var markers = $Markers
 @onready var scores = $CanvasLayer/Scores
+@onready var game_time = $GameTime
+@onready var time_remaining_label = $CanvasLayer/TimeRemainingLabel
 
 func _ready():
 	Game.players.sort()
@@ -21,6 +23,19 @@ func _ready():
 		player.init(id)
 		
 		Game.player_nodes[id] = player
-		
+		game_time.start()
+
+
+func _process(delta):
+	var time_remaining = int(game_time.time_left)
+	var seconds = time_remaining%60
+	var minutes = (time_remaining/60)%60
+	time_remaining_label.text = "%02d:%02d" % [minutes, seconds]
+
 func on_scores_updated():
 	scores.update_tables()
+
+
+func _on_game_time_timeout():
+	# TODO: Implement end of the game
+	pass

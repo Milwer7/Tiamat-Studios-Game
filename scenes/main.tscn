@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3cyyxuum5qkw"]
+[gd_scene load_steps=12 format=3 uid="uid://3cyyxuum5qkw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_cu8gd"]
 [ext_resource type="PackedScene" uid="uid://cs8sfu7xg4qbp" path="res://scenes/Player.tscn" id="2_pcwyn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dh5mejde0o6uv" path="res://scenes/healing_zone.tscn" id="6_jw0bp"]
 [ext_resource type="Texture2D" uid="uid://cjrkqvnq413sk" path="res://assets_map/Dungeon_Tileset.png" id="7_8ao7u"]
 [ext_resource type="PackedScene" uid="uid://cjlgrsdprjitq" path="res://scenes/crosshair.tscn" id="7_y0vaw"]
+[ext_resource type="FontFile" uid="uid://ct104lniilrcm" path="res://assets/XTypewriter_Font_0_80/OpenType (.otf)/XTypewriter-Bold.otf" id="8_32aqu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0m83"]
 texture = ExtResource("7_8ao7u")
@@ -5015,4 +5016,21 @@ offset_top = 27.0
 offset_right = 88.0
 offset_bottom = 95.0
 
+[node name="TimeRemainingLabel" type="Label" parent="CanvasLayer"]
+offset_left = 500.0
+offset_top = 27.0
+offset_right = 632.0
+offset_bottom = 53.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_32aqu")
+text = "wena po barney"
+horizontal_alignment = 1
+
 [node name="Crosshair" parent="." instance=ExtResource("7_y0vaw")]
+
+[node name="GameTime" type="Timer" parent="."]
+wait_time = 600.0
+one_shot = true
+
+[connection signal="timeout" from="GameTime" to="." method="_on_game_time_timeout"]
