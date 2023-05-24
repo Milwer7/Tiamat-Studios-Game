@@ -80,7 +80,7 @@ func _physics_process(delta) -> void:
 		if Input.is_action_just_pressed("fire"):
 			#rpc("_fire")
 			self._fire.rpc()
-# Obtener la posición global del cursor del mouse
+		# Obtener la posición global del cursor del mouse
 		var mousePosition: Vector2 = get_global_mouse_position()
 
 		# Calcular la dirección hacia el cursor del mouse

@@ -31,6 +31,16 @@ func _process(delta):
 	var seconds = time_remaining%60
 	var minutes = (time_remaining/60)%60
 	time_remaining_label.text = "%02d:%02d" % [minutes, seconds]
+	
+	# 8 mins time
+	if abs(game_time.time_left - 480) <= 0.005:
+		print("mgta el fornai") 
+	# 5 mins time
+	if abs(game_time.time_left - 300) <= 0.005:
+		print("no mgta el fornai")
+	# 2:30 mins time
+	if abs(game_time.time_left - 150) <= 0.005:
+		print("no gasten plata en el genshin")
 
 func on_scores_updated():
 	scores.update_tables()
