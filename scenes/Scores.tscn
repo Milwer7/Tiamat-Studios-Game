@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7uetxanp4guo"]
 
 [ext_resource type="Script" path="res://scripts/scores.gd" id="1_gqvgy"]
-[ext_resource type="FontFile" path="res://assets/XTypewriter_Font_0_80/OpenType (.otf)/XTypewriter-Regular.otf" id="2_uwwf6"]
+[ext_resource type="FontFile" uid="uid://b1jsrtc3m4pyq" path="res://assets/XTypewriter_Font_0_80/OpenType (.otf)/XTypewriter-Regular.otf" id="2_uwwf6"]
 
 [node name="Scores" type="VBoxContainer"]
 script = ExtResource("1_gqvgy")
