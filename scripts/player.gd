@@ -80,18 +80,19 @@ func _physics_process(delta) -> void:
 			deposit()
 		if Input.is_action_just_pressed("fire"):
 			#rpc("_fire")
-			self._fire.rpc()
+			var mouse_position: Vector2 = get_global_mouse_position()
+			self._fire.rpc(mouse_position)
 		# Obtener la posición global del cursor del mouse
 		var mousePosition: Vector2 = get_global_mouse_position()
 
 		# Calcular la dirección hacia el cursor del mouse
 		var direction: Vector2 = mousePosition - global_position
-
+		self._reflex.rpc(direction)
 		# Comprobar si la dirección está a la derecha o a la izquierda
-		if direction.x > 0:
-			pivot.scale.x = 1  # No se realiza rotación, el personaje mira hacia la derecha
-		else:
-			pivot.scale.x = -1  # Se rota 180 grados, el personaje mira hacia la izquierda 
+		#if direction.x > 0:
+		#	pivot.scale.x = 1  # No se realiza rotación, el personaje mira hacia la derecha
+		#else:
+		#	pivot.scale.x = -1  # Se rota 180 grados, el personaje mira hacia la izquierda 
 	#Animation
 	move_and_slide()
 	if move_input.x != 0:
@@ -148,7 +149,7 @@ func _on_collection_area_area_exited(body):
 		on_healing_area = false
 
 @rpc("reliable","call_local")
-func _fire():
+func _fire(mouse_position):
 	if can_fire:
 		var bullet = Bullet.instantiate()
 		var id = multiplayer.get_remote_sender_id()
@@ -156,7 +157,7 @@ func _fire():
 		get_parent().add_child(bullet)
 		bullet.global_position = bullet_spawn.global_position
 		# Obtener la posición global del cursor del mouse
-		var mouse_position: Vector2 = get_global_mouse_position()
+		#var mouse_position: Vector2 = get_global_mouse_position()
 		# Calcular el ángulo entre la posición del objeto y la posición del cursor del mouse
 		var object_position: Vector2 = bullet.global_position
 		var angle: float = atan2(mouse_position.y - object_position.y, mouse_position.x - object_position.x)
@@ -202,3 +203,10 @@ func heal_player():
 func _on_healing_ticks_timeout():
 	if on_healing_area:
 		heal_player()
+
+@rpc("unreliable","call_local")
+func _reflex(direction):
+	if direction.x > 0:
+			pivot.scale.x = 1  # No se realiza rotación, el personaje mira hacia la derecha
+	else:
+			pivot.scale.x = -1  # Se rota 180 grados, el personaje mira hacia la izquierda 
