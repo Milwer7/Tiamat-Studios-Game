@@ -30,6 +30,7 @@ var collectables : Array = []
 var collected : Array = []
 var starting_point = Vector2.ZERO
 var on_healing_area = false
+var team
 
 #export(PackedScene) var Bullet
 #var Bullet = PackedScene.new()

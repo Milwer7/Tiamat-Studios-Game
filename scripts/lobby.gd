@@ -17,7 +17,9 @@ const PORT = 5409
 @onready var go = $PanelContainer/MarginContainer/Pending/HBoxContainer/Go
 
 @onready var info = $PanelContainer/MarginContainer/Start/Info
-
+@onready var button = $PanelContainer/MarginContainer/Pending/TeamSelector/Button
+@onready var button_2 = $PanelContainer/MarginContainer/Pending/TeamSelector/Button2
+var connectedPlayers = {}
 
 # { id: true }
 var status = { 1 : false }
@@ -96,7 +98,7 @@ func _paint_ready(id: int) -> void:
 func _on_go_pressed() -> void:
 	rpc("player_ready")
 	_paint_ready(multiplayer.get_unique_id())
-
+	
 
 @rpc("reliable", "any_peer", "call_local")
 func player_ready():
@@ -120,3 +122,4 @@ func onTeam2ButtonPressed():
 @rpc("any_peer", "call_local", "reliable")
 func start_game() -> void:
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	
