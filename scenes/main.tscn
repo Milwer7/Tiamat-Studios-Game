@@ -4955,13 +4955,18 @@ layer_1/tile_data = PackedInt32Array(786447, 0, 0, 851983, 0, 1, 917519, 0, 2, 9
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="Player1Spawn" type="Marker2D" parent="Markers"]
-position = Vector2(138, 259)
+position = Vector2(109, 206)
 scale = Vector2(0.5, 0.5)
 gizmo_extents = 36.0
 
 [node name="Player2Spawn" type="Marker2D" parent="Markers"]
-position = Vector2(982, 260)
+position = Vector2(1006, 243)
 scale = Vector2(0.5, 0.5)
+gizmo_extents = 36.0
+
+[node name="Player3Spawn" type="Marker2D" parent="Markers"]
+position = Vector2(101, 350)
+scale = Vector2(0.25, 0.25)
 gizmo_extents = 36.0
 
 [node name="Interactive" type="Node2D" parent="."]
@@ -5001,7 +5006,7 @@ position = Vector2(851, 347)
 scale = Vector2(0.3, 0.3)
 
 [node name="HealingZone" parent="Interactive" instance=ExtResource("6_jw0bp")]
-position = Vector2(141, 261)
+position = Vector2(130, 268)
 scale = Vector2(3, 3)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]

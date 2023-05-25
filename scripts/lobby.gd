@@ -1,7 +1,7 @@
 extends MarginContainer
 
 
-const MAX_PLAYERS = 2
+const MAX_PLAYERS = 3
 const PORT = 5409
 
 @onready var user = %User
@@ -109,7 +109,13 @@ func player_ready():
 			all_ok = all_ok and ok
 		if all_ok:
 			rpc("start_game")
+			
+func onTeam1ButtonPressed():
+	rpc_id(1, "setPlayerTeam", 1)
 
+func onTeam2ButtonPressed():
+	rpc_id(1, "setPlayerTeam", 2)
+	
 
 @rpc("any_peer", "call_local", "reliable")
 func start_game() -> void:

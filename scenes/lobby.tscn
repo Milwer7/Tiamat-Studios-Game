@@ -20,6 +20,7 @@ layout_mode = 2
 
 [node name="Start" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
@@ -64,7 +65,6 @@ layout_mode = 2
 
 [node name="Pending" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
