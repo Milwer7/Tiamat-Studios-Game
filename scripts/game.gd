@@ -1,5 +1,5 @@
 extends Node
 
-# [ {id, name, team} ]
+# [ {id, name, team, node} ]
 var players: Array = []
-var player_nodes = {}
+
