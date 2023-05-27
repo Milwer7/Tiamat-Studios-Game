@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfx0aqk1mrdlo"]
+[gd_scene load_steps=3 format=3 uid="uid://bfx0aqk1mrdlo"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_kpbr1"]
+[ext_resource type="PackedScene" uid="uid://h3ttat278bbx" path="res://scenes/player_team.tscn" id="2_y6bn5"]
 
 [node name="Lobby" type="MarginContainer"]
 anchors_preset = 15
@@ -9,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kpbr1")
+player_team = ExtResource("2_y6bn5")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2

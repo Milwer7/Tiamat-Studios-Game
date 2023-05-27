@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://h3ttat278bbx"]
+
+[ext_resource type="Script" path="res://scripts/player_team.gd" id="1_5ea2m"]
+
+[node name="player-team" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5ea2m")
+
+[node name="namee" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "name"
+
+[node name="team" type="Label" parent="."]
+layout_mode = 2
+text = "0
+"
