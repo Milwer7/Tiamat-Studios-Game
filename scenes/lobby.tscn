@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfx0aqk1mrdlo"]
+[gd_scene load_steps=12 format=3 uid="uid://bfx0aqk1mrdlo"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_kpbr1"]
 [ext_resource type="PackedScene" uid="uid://h3ttat278bbx" path="res://scenes/player_team.tscn" id="2_y6bn5"]
+[ext_resource type="Texture2D" uid="uid://cr37a56c8igmu" path="res://assets/war-pixel-art-2d-game-backgrounds/PNG/War4/0.png" id="3_tr0wp"]
+[ext_resource type="Texture2D" uid="uid://dr7wvqvebhjg0" path="res://assets/Large Buttons/Large Buttons/New game Button.png" id="4_w2kaa"]
+[ext_resource type="Texture2D" uid="uid://di2cousf1r2v7" path="res://assets/Large Buttons/Large Buttons/Play Button.png" id="5_7xwwm"]
+[ext_resource type="Texture2D" uid="uid://fm31h8xnvr1w" path="res://assets/Large Buttons/Colored Large Buttons/New Game  col_Button.png" id="5_f5btc"]
+[ext_resource type="Texture2D" uid="uid://dp0jocq1c5b4r" path="res://assets/Large Buttons/Large Buttons/Back Button.png" id="6_wa2lx"]
+[ext_resource type="Texture2D" uid="uid://qcvnyivaa4l3" path="res://assets/Large Buttons/Colored Large Buttons/Play col_Button.png" id="7_1dxew"]
+[ext_resource type="Texture2D" uid="uid://c72hd0s3j7g3g" path="res://assets/Large Buttons/Large Buttons/Start Button.png" id="7_dudjw"]
+[ext_resource type="Texture2D" uid="uid://lrda78cyodf6" path="res://assets/Large Buttons/Colored Large Buttons/Back  col_Button.png" id="9_0wxt3"]
+[ext_resource type="Texture2D" uid="uid://b37wsxexyosvr" path="res://assets/Large Buttons/Colored Large Buttons/Start  col_Button.png" id="11_ejx6o"]
 
 [node name="Lobby" type="MarginContainer"]
 anchors_preset = 15
@@ -11,6 +20,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kpbr1")
 player_team = ExtResource("2_y6bn5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_tr0wp")
+expand_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -49,17 +63,38 @@ text = "127.0.0.1"
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Start"]
 layout_mode = 2
 
-[node name="Host" type="Button" parent="PanelContainer/MarginContainer/Start/HBoxContainer"]
+[node name="Host" type="TextureButton" parent="PanelContainer/MarginContainer/Start/HBoxContainer"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Host"
+texture_normal = ExtResource("4_w2kaa")
+texture_pressed = ExtResource("4_w2kaa")
+texture_hover = ExtResource("5_f5btc")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Join" type="Button" parent="PanelContainer/MarginContainer/Start/HBoxContainer"]
+[node name="Join2" type="Button" parent="PanelContainer/MarginContainer/Start/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Join"
+text = "Join
+"
+
+[node name="Join" type="TextureButton" parent="PanelContainer/MarginContainer/Start/HBoxContainer/Join2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_7xwwm")
+texture_pressed = ExtResource("5_7xwwm")
+texture_hover = ExtResource("7_1dxew")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Info" type="Label" parent="PanelContainer/MarginContainer/Start"]
 visible = false
@@ -106,13 +141,29 @@ text = "Equipo 2"
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Pending"]
 layout_mode = 2
 
-[node name="Cancel" type="Button" parent="PanelContainer/MarginContainer/Pending/HBoxContainer"]
+[node name="Cancel" type="TextureButton" parent="PanelContainer/MarginContainer/Pending/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Cancel
-"
+texture_normal = ExtResource("6_wa2lx")
+texture_pressed = ExtResource("6_wa2lx")
+texture_hover = ExtResource("9_0wxt3")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Go" type="Button" parent="PanelContainer/MarginContainer/Pending/HBoxContainer"]
+[node name="Go2" type="Button" parent="PanelContainer/MarginContainer/Pending/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Ready"
+
+[node name="Go" type="TextureButton" parent="PanelContainer/MarginContainer/Pending/HBoxContainer/Go2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_dudjw")
+texture_pressed = ExtResource("7_dudjw")
+texture_hover = ExtResource("11_ejx6o")
+ignore_texture_size = true
+stretch_mode = 0

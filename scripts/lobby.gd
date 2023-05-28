@@ -1,7 +1,7 @@
 extends MarginContainer
 @export var player_team: PackedScene
 
-const MAX_PLAYERS = 3
+const MAX_PLAYERS = 6
 const PORT = 5409
 
 @onready var user = %User
@@ -14,7 +14,7 @@ const PORT = 5409
 @onready var players = %Players
 
 @onready var cancel = $PanelContainer/MarginContainer/Pending/HBoxContainer/Cancel
-@onready var go = $PanelContainer/MarginContainer/Pending/HBoxContainer/Go
+@onready var go = $PanelContainer/MarginContainer/Pending/HBoxContainer/Go2/Go
 
 @onready var info = $PanelContainer/MarginContainer/Start/Info
 @onready var button = $PanelContainer/MarginContainer/Pending/TeamSelector/Button
