@@ -1084,6 +1084,26 @@ position = Vector2(907, 892)
 scale = Vector2(0.5, 0.5)
 gizmo_extents = 36.0
 
+[node name="Player3Spawn" type="Marker2D" parent="Markers"]
+position = Vector2(133, 50)
+scale = Vector2(0.5, 0.5)
+gizmo_extents = 36.0
+
+[node name="Player4Spawn" type="Marker2D" parent="Markers"]
+position = Vector2(910, 830)
+scale = Vector2(0.5, 0.5)
+gizmo_extents = 36.0
+
+[node name="Player5Spawn" type="Marker2D" parent="Markers"]
+position = Vector2(53, 119)
+scale = Vector2(0.5, 0.5)
+gizmo_extents = 36.0
+
+[node name="Player6Spawn" type="Marker2D" parent="Markers"]
+position = Vector2(840, 892)
+scale = Vector2(0.5, 0.5)
+gizmo_extents = 36.0
+
 [node name="Interactive" type="Node2D" parent="."]
 
 [node name="collectable" parent="Interactive" instance=ExtResource("4_roa2v")]
