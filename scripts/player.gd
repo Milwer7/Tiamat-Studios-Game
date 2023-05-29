@@ -9,7 +9,6 @@ const speed = 100
 @export var points = 0
 @onready var label = $Label
 @onready var deposit_delay = $depositDelay
-@onready var label_2 = $Label2
 @onready var character_camera = $CharacterCamera
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
@@ -114,7 +113,6 @@ func deposit():
 func send_points(value):
 	points = value
 	scores_updated.emit() # TODO: Fix scores
-	label_2.text = "Points: " + str(points)
 
 @rpc("call_local", "reliable")
 func send_backpack(value):

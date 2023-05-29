@@ -280,6 +280,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_mmd1w"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+motion_mode = 1
 script = ExtResource("1_jd037")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -319,21 +320,14 @@ visible = false
 shape = SubResource("CircleShape2D_rfwvt")
 
 [node name="Label" type="Label" parent="."]
+z_index = 10
+z_as_relative = false
 offset_left = -48.0
 offset_top = 19.0
 offset_right = 56.0
 offset_bottom = 41.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Backpack: 0"
-
-[node name="Label2" type="Label" parent="."]
-offset_left = -38.0
-offset_top = -40.0
-offset_right = 47.0
-offset_bottom = -18.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Points: 0
-"
 
 [node name="CharacterCamera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
