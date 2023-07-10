@@ -2,8 +2,10 @@ extends Node2D
 
 @export var player_scene: PackedScene
 @onready var players = $Players
-@onready var markers = $Markers
+@onready var markers = $MarkersTeam1
+@onready var markers2 = $MarkersTeam2
 @onready var scores = $CanvasLayer/Scores
+@onready var scores2 = $CanvasLayer/TeamScores
 @onready var game_time = $GameTime
 @onready var time_remaining_label = $CanvasLayer/TimeRemainingLabel
 
@@ -13,13 +15,19 @@ func _ready():
 	for i in Game.players.size():
 		var id = Game.players[i].id
 		var player : Player = player_scene.instantiate()
-		var marker = markers.get_child(i)
-
+		
+		var team = Game.players[i].team
+		print("team=" , team)
 		player.name = str(id)
 		player.scale = Vector2(0.8,0.8)
 		player.team = Game.players[i].team
 		players.add_child(player)
-		player.global_position = marker.global_position
+		if(team==1):
+			var marker = markers.get_child(i%3)
+			player.global_position = marker.global_position
+		else:
+			var marker = markers2.get_child(i%3)
+			player.global_position = marker.global_position			
 		player.scores_updated.connect(on_scores_updated)
 		player.init(id)
 		
@@ -45,6 +53,7 @@ func _process(delta):
 
 func on_scores_updated():
 	scores.update_tables()
+	#scores2.update_tables()
 
 
 func _on_game_time_timeout():

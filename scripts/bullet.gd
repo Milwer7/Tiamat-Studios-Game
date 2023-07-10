@@ -1,7 +1,7 @@
 extends Area2D
 
 var SPEED = 400
-
+var shooter_team
 
 func _ready():
 	#print("position incial = " , position)
@@ -13,7 +13,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body: Node):
 	if body.is_in_group("Player"):
-		body.on_hit.rpc()
+		body.on_hit.rpc(shooter_team)
 	self.destroy.rpc()
 	
 @rpc("call_local", "reliable")

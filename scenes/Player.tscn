@@ -291,6 +291,7 @@ shape = SubResource("CapsuleShape2D_y08x6")
 [node name="Pivot" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+z_index = 1
 texture = ExtResource("2_t4fu1")
 hframes = 5
 
@@ -298,7 +299,6 @@ hframes = 5
 position = Vector2(15, -2.5)
 
 [node name="ProgressBar" type="ProgressBar" parent="Pivot"]
-visible = false
 offset_left = -20.0
 offset_top = -15.0
 offset_right = -16.0
@@ -310,6 +310,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="Pivot"]
+z_index = 1
 texture = ExtResource("4_84xjs")
 hframes = 6
 

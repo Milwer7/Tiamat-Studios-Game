@@ -18,6 +18,7 @@ const speed = 100
 @onready var progress_bar = $Pivot/ProgressBar
 @onready var respawn_time = $RespawnTime
 @onready var healing_ticks = $HealingTicks
+@onready var sprite = $Pivot/Sprite2D2
 
 
 var is_dead = false
@@ -46,6 +47,9 @@ func init(id):
 		character_camera.make_current()
 		progress_bar.visible = true
 	animation_tree.active = true
+	if(team == 1):
+		sprite.hide()
+	
 
 func _ready_():
 	deposit_delay.time_left = 0
@@ -150,6 +154,7 @@ func _on_collection_area_area_exited(body):
 func _fire(mouse_position):
 	if can_fire:
 		var bullet = Bullet.instantiate()
+		bullet.shooter_team = team
 		var id = multiplayer.get_remote_sender_id()
 		bullet.set_multiplayer_authority(id)
 		get_parent().add_child(bullet)
@@ -170,11 +175,12 @@ func _fire(mouse_position):
 		timer.start()
 
 @rpc("reliable","any_peer")		
-func on_hit():
-	health -= 1
-	progress_bar.value = health * 5
-	if health <= 0:
-		destroy.rpc()
+func on_hit(shooter_team):
+	if shooter_team != team:
+		health -= 1
+		progress_bar.value = health * 5
+		if health <= 0:
+			destroy.rpc()
 
 @rpc("call_local", "reliable", "any_peer")
 func destroy():
