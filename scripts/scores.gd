@@ -18,6 +18,6 @@ func update_tables():
 		j += 1
 		#puntos_team1 += 1
 		#puntos_team2 += 1
-		label_team1.text = ("Team 1 Points = " + str(puntos_team1))
-		label_team2.text = ("Team 2 Points = " + str(puntos_team2))
+		#label_team1.text = ("Team 1 Points = " + str(puntos_team1))
+		#label_team2.text = ("Team 2 Points = " + str(puntos_team2))
 	

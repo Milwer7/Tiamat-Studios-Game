@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://62k6w4m3gtdp"]
+
+[ext_resource type="Script" path="res://scripts/team_scores.gd" id="1_iof31"]
+[ext_resource type="FontFile" uid="uid://b1jsrtc3m4pyq" path="res://assets/XTypewriter_Font_0_80/OpenType (.otf)/XTypewriter-Regular.otf" id="2_37xo4"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_iof31")
+
+[node name="Team1" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_37xo4")
+text = "Team 1 Points = 0
+"
+
+[node name="Team2" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_37xo4")
+text = "Team 2 Points = 0
+"

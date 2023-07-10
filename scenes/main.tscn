@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cjlgrsdprjitq" path="res://scenes/crosshair.tscn" id="7_y0vaw"]
 [ext_resource type="FontFile" uid="uid://ct104lniilrcm" path="res://assets/XTypewriter_Font_0_80/OpenType (.otf)/XTypewriter-Bold.otf" id="8_32aqu"]
 [ext_resource type="Texture2D" uid="uid://faii2j6j6fmr" path="res://assets_map/tilesets/decor_16x16.png" id="8_xmi23"]
-[ext_resource type="Script" path="res://scripts/team_scores.gd" id="14_cilo1"]
+[ext_resource type="PackedScene" uid="uid://62k6w4m3gtdp" path="res://scenes/team_scores.tscn" id="14_g1ij8"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_yi826"]
 tile_data = PackedInt32Array(0, 2, 5, 65536, 2, 6, 131072, 2, 7, 196608, 2, 8, 1, 65538, 5, 65537, 65538, 6, 131073, 65538, 7, 196609, 65538, 8, 2, 131074, 5, 65538, 131074, 6, 131074, 131074, 7, 196610, 131074, 8)
@@ -1170,11 +1170,11 @@ theme_override_fonts/font = ExtResource("8_32aqu")
 text = "wena po barney"
 horizontal_alignment = 1
 
-[node name="TeamScores" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 89.0
-offset_right = 129.0
-offset_bottom = 40.0
-script = ExtResource("14_cilo1")
+[node name="VBoxContainer" parent="CanvasLayer" instance=ExtResource("14_g1ij8")]
+offset_left = 269.0
+offset_top = 12.0
+offset_right = 309.0
+offset_bottom = 65.0
 
 [node name="Crosshair" parent="." instance=ExtResource("7_y0vaw")]
 

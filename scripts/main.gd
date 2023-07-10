@@ -5,7 +5,7 @@ extends Node2D
 @onready var markers = $MarkersTeam1
 @onready var markers2 = $MarkersTeam2
 @onready var scores = $CanvasLayer/Scores
-@onready var scores2 = $CanvasLayer/TeamScores
+@onready var scores2 = $CanvasLayer/VBoxContainer
 @onready var game_time = $GameTime
 @onready var time_remaining_label = $CanvasLayer/TimeRemainingLabel
 
@@ -53,7 +53,7 @@ func _process(delta):
 
 func on_scores_updated():
 	scores.update_tables()
-	#scores2.update_tables()
+	scores2.update_tables()
 
 
 func _on_game_time_timeout():
