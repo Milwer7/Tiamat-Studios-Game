@@ -98,8 +98,8 @@ func _physics_process(delta) -> void:
 		#	pivot.scale.x = -1  # Se rota 180 grados, el personaje mira hacia la izquierda 
 	#Animation
 	move_and_slide()
-	if move_input.x != 0:
-		pivot.scale.x = sign(move_input.x)
+#	if move_input.x != 0:
+#		pivot.scale.x = sign(move_input.x)
 	if abs(velocity.x) >= 10 or abs(velocity.y) >= 10 or move_input != Vector2.ZERO:
 		playback.travel("run")
 	else:
@@ -208,7 +208,7 @@ func _on_healing_ticks_timeout():
 	if on_healing_area:
 		heal_player()
 
-@rpc("unreliable","call_local")
+@rpc("unreliable","call_local","any_peer")
 func _reflex(direction):
 	if direction.x > 0:
 			pivot.scale.x = 1  # No se realiza rotación, el personaje mira hacia la derecha

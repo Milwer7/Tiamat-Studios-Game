@@ -1172,9 +1172,9 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" parent="CanvasLayer" instance=ExtResource("14_g1ij8")]
 offset_left = 269.0
-offset_top = 12.0
-offset_right = 309.0
-offset_bottom = 65.0
+offset_top = 19.0
+offset_right = 429.0
+offset_bottom = 72.0
 
 [node name="Crosshair" parent="." instance=ExtResource("7_y0vaw")]
 
