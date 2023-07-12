@@ -174,13 +174,20 @@ func _fire(mouse_position):
 		add_child(timer)
 		timer.start()
 
+
+
 @rpc("reliable","any_peer")		
 func on_hit(shooter_team):
 	if shooter_team != team:
-		health -= 1
-		progress_bar.value = health * 5
-		if health <= 0:
-			destroy.rpc()
+		update_progress_bar.rpc()
+
+
+@rpc("call_local", "reliable", "any_peer")
+func update_progress_bar():
+	health -= 1
+	progress_bar.value = health * 5
+	if health <= 0:
+		destroy.rpc()
 
 @rpc("call_local", "reliable", "any_peer")
 func destroy():

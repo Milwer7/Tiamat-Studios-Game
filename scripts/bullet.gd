@@ -11,6 +11,7 @@ func _ready():
 func _physics_process(delta):
 	position += SPEED * transform.x * delta 
 
+
 func _on_body_entered(body: Node):
 	if body.is_in_group("Player"):
 		body.on_hit.rpc(shooter_team)
