@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 
 const speed = 100
+var shooting_wait_time = 0.5
 @export var acceleration = 4000
 @export var backpack_max_size = 10
 @export var backpack_size = 0
@@ -169,7 +170,7 @@ func _fire(mouse_position):
 		can_fire = 0
 		var timer = Timer.new()
 		timer.connect("timeout",do_this)
-		timer.wait_time = 0.5
+		timer.wait_time = shooting_wait_time
 		timer.one_shot = true
 		add_child(timer)
 		timer.start()
@@ -221,3 +222,7 @@ func _reflex(direction):
 			pivot.scale.x = 1  # No se realiza rotación, el personaje mira hacia la derecha
 	else:
 			pivot.scale.x = -1  # Se rota 180 grados, el personaje mira hacia la izquierda 
+
+
+func _on_button_toggled(button_pressed):
+	shooting_wait_time = 0.2
