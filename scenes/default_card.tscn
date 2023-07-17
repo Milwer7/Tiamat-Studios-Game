@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjpaiibhndgxt"]
+
+[ext_resource type="Script" path="res://scripts/default_card.gd" id="1_bnag6"]
+[ext_resource type="Texture2D" uid="uid://btdre5okqp1yk" path="res://assets/CardAssets/rapid_fire.png" id="1_vxpyd"]
+[ext_resource type="FontFile" uid="uid://cuhfkkov4magk" path="res://assets/XTypewriter_Font_0_80/TrueType (.ttf)/XTypewriter-Bold.ttf" id="3_nu6u0"]
+[ext_resource type="FontFile" uid="uid://c8hxqaf6e2q73" path="res://assets/XTypewriter_Font_0_80/TrueType (.ttf)/XTypewriter-Regular.ttf" id="4_kw6la"]
+
+[node name="DefaultCard" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_bnag6")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 2
+clip_text = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="BuffIcon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_vxpyd")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_nu6u0")
+theme_override_font_sizes/font_size = 32
+text = "Rapid Fire"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_kw6la")
+theme_override_font_sizes/font_size = 32
+text = "Increases the Rate of Fire"
+horizontal_alignment = 1
+autowrap_mode = 3

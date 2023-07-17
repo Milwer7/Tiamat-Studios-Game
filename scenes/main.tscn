@@ -1,8 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://3cyyxuum5qkw"]
+[gd_scene load_steps=30 format=3 uid="uid://3cyyxuum5qkw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_cu8gd"]
 [ext_resource type="PackedScene" uid="uid://cs8sfu7xg4qbp" path="res://scenes/Player.tscn" id="2_pcwyn"]
 [ext_resource type="Texture2D" uid="uid://dgm54ulg2rnwf" path="res://assets_map/tilesets/plains.png" id="3_fqdcj"]
+[ext_resource type="Resource" uid="uid://bef4h0r3s41rx" path="res://resources/rapid_fire.tres" id="3_r1kyt"]
+[ext_resource type="PackedScene" uid="uid://cjpaiibhndgxt" path="res://scenes/default_card.tscn" id="4_2g4cw"]
+[ext_resource type="Resource" uid="uid://buekhh38phukm" path="res://resources/rapid_fire2.tres" id="4_h3hb2"]
 [ext_resource type="Texture2D" uid="uid://c36yxyjx76bde" path="res://assets_map/tilesets/grass.png" id="4_pdwmr"]
 [ext_resource type="PackedScene" uid="uid://1rsjd4d8tfpq" path="res://scenes/collectable.tscn" id="4_roa2v"]
 [ext_resource type="Texture2D" uid="uid://l514ac2ksftx" path="res://assets_map/sprites/objects/objects.png" id="5_5huex"]
@@ -1036,6 +1039,8 @@ pattern_3 = SubResource("TileMapPattern_lk4hl")
 [node name="Main" type="Node2D"]
 script = ExtResource("1_cu8gd")
 player_scene = ExtResource("2_pcwyn")
+first_cards = Array[Resource("res://resources/card_buff.gd")]([ExtResource("3_r1kyt"), ExtResource("4_h3hb2"), ExtResource("3_r1kyt")])
+card_scene = ExtResource("4_2g4cw")
 
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vqhxj")
@@ -1181,5 +1186,22 @@ offset_bottom = 72.0
 [node name="GameTime" type="Timer" parent="."]
 wait_time = 600.0
 one_shot = true
+
+[node name="PauseTime" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="CardSelector" type="HBoxContainer" parent="CanvasLayer2"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+alignment = 1
 
 [connection signal="timeout" from="GameTime" to="." method="_on_game_time_timeout"]

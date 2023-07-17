@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardBuff" load_steps=3 format=3 uid="uid://buekhh38phukm"]
+
+[ext_resource type="Texture2D" uid="uid://btdre5okqp1yk" path="res://assets/CardAssets/rapid_fire.png" id="1_f70la"]
+[ext_resource type="Script" path="res://resources/card_buff.gd" id="2_g1toh"]
+
+[resource]
+script = ExtResource("2_g1toh")
+name = "Rapid Fire 2"
+picture = ExtResource("1_f70la")
+description = "Increases a lot the Rate of Fire."
+action = "rapid_fire2"

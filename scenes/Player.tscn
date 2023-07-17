@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://cs8sfu7xg4qbp"]
+[gd_scene load_steps=20 format=3 uid="uid://cs8sfu7xg4qbp"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jd037"]
 [ext_resource type="Texture2D" uid="uid://cmym3bta3vwig" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Black/Gunner_Black_Idle.png" id="2_t4fu1"]
 [ext_resource type="Texture2D" uid="uid://c73jrc30lth8m" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Red/Gunner_Red_Idle.png" id="3_a2g68"]
 [ext_resource type="Texture2D" uid="uid://b43fdd43o7pqw" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Black/Gunner_Black_Run.png" id="4_84xjs"]
 [ext_resource type="Texture2D" uid="uid://4047g70hab2p" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Red/Gunner_Red_Run.png" id="4_auljk"]
-[ext_resource type="Texture2D" uid="uid://btdre5okqp1yk" path="res://assets/CardAssets/rapid_fire.png" id="6_0wgve"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y08x6"]
 radius = 3.0
@@ -352,68 +351,7 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
-[node name="Button" type="Button" parent="."]
-offset_left = -272.0
-offset_top = -119.0
-offset_right = -111.0
-offset_bottom = 110.0
-theme_override_font_sizes/font_size = 0
-text = "Rapid Fire
-
-Increases Rate of 
-Fire."
-icon = ExtResource("6_0wgve")
-clip_text = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="Button2" type="Button" parent="."]
-offset_left = 110.0
-offset_top = -119.0
-offset_right = 271.0
-offset_bottom = 110.0
-theme_override_font_sizes/font_size = 0
-text = "Default Button Text
-
-Description of the
- Card's effect."
-icon = ExtResource("6_0wgve")
-clip_text = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="Button3" type="Button" parent="."]
-offset_left = -79.0
-offset_top = -122.0
-offset_right = 82.0
-offset_bottom = 107.0
-theme_override_font_sizes/font_size = 0
-text = "Default Button Text
-
-Description of the
- Card's effect."
-icon = ExtResource("6_0wgve")
-clip_text = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="CardSelector" type="HBoxContainer" parent="."]
-clip_contents = true
-custom_minimum_size = Vector2(100, 150)
-layout_direction = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]
 [connection signal="timeout" from="RespawnTime" to="." method="_on_respawn_time_timeout"]
 [connection signal="timeout" from="HealingTicks" to="." method="_on_healing_ticks_timeout"]
-[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

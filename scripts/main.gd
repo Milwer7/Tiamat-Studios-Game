@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var player_scene: PackedScene
+@export var first_cards: Array[CardBuff]
+@export var card_scene: PackedScene
 @onready var players = $Players
 @onready var markers = $MarkersTeam1
 @onready var markers2 = $MarkersTeam2
@@ -8,6 +10,7 @@ extends Node2D
 @onready var scores2 = $CanvasLayer/VBoxContainer
 @onready var game_time = $GameTime
 @onready var time_remaining_label = $CanvasLayer/TimeRemainingLabel
+@onready var card_selector = $CanvasLayer2/CardSelector
 
 func _ready():
 	Game.players.sort_custom(func(a, b): return a.id < b.id)
@@ -33,6 +36,8 @@ func _ready():
 		
 		Game.players[i].node = player
 		game_time.start()
+		
+	timers()
 
 
 func _process(delta):
@@ -41,15 +46,6 @@ func _process(delta):
 	var minutes = (time_remaining/60)%60
 	time_remaining_label.text = "%02d:%02d" % [minutes, seconds]
 	
-	# 8 mins time
-	if abs(game_time.time_left - 480) <= 0.005:
-		print("mgta el fornai") 
-	# 5 mins time
-	if abs(game_time.time_left - 300) <= 0.005:
-		print("no mgta el fornai")
-	# 2:30 mins time
-	if abs(game_time.time_left - 150) <= 0.005:
-		print("no gasten plata en el genshin")
 
 func on_scores_updated():
 	scores.update_tables()
@@ -59,3 +55,16 @@ func on_scores_updated():
 func _on_game_time_timeout():
 	# TODO: Implement end of the game
 	pass
+
+func timers():
+	await get_tree().create_timer(10).timeout
+	for card_res in first_cards:
+		var card = card_scene.instantiate()
+		card_selector.add_child(card)
+		card.start(card_res)
+	card_selector.show()
+	await get_tree().create_timer(5).timeout
+	card_selector.hide()
+#	await get_tree().create_timer(180).timeout
+#	await get_tree().create_timer(150).timeout
+#	await get_tree().create_timer(150).timeout
