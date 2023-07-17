@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
-const speed = 100
+var speed = 100
 var shooting_wait_time = 0.5
 @export var acceleration = 4000
 @export var backpack_max_size = 10

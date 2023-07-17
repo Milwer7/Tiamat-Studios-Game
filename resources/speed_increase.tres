@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardBuff" load_steps=3 format=3 uid="uid://cnmqwn3yrrskk"]
+
+[ext_resource type="Texture2D" uid="uid://bof6g60lhsdps" path="res://assets/CardAssets/boot.png" id="1_vxu6m"]
+[ext_resource type="Script" path="res://scripts/card_buff.gd" id="2_ikgwx"]
+
+[resource]
+script = ExtResource("2_ikgwx")
+name = "Speed Increase"
+picture = ExtResource("1_vxu6m")
+description = "Increases your movement speed"
+action = "speed_increase"

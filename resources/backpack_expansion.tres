@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardBuff" load_steps=3 format=3 uid="uid://blg7e8lxh7smm"]
+
+[ext_resource type="Texture2D" uid="uid://b5g5ao5k0qesa" path="res://assets/CardAssets/backpack_expansion.png" id="1_uvdo5"]
+[ext_resource type="Script" path="res://scripts/card_buff.gd" id="2_yx8h0"]
+
+[resource]
+script = ExtResource("2_yx8h0")
+name = "Backpack Expansion"
+picture = ExtResource("1_uvdo5")
+description = "Increases by 5 the size of your backpack"
+action = "backpack_increase"
