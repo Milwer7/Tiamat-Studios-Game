@@ -19,3 +19,5 @@ func start(card_buff: CardBuff):
 
 func _on_button_pressed():
 	Actions.get_action(action).call()
+	for child in Game.card_selector.get_children():
+		child.queue_free()

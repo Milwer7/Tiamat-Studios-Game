@@ -2,6 +2,8 @@ extends Node2D
 
 @export var player_scene: PackedScene
 @export var first_cards: Array[CardBuff]
+@export var second_cards: Array[CardBuff]
+@export var third_cards: Array[CardBuff]
 @export var card_scene: PackedScene
 @onready var players = $Players
 @onready var markers = $MarkersTeam1
@@ -36,11 +38,12 @@ func _ready():
 		
 		Game.players[i].node = player
 		game_time.start()
-		
+	
+	Game.card_selector = card_selector
 	timers()
 
 
-func _process(delta):
+func _process(_delta):
 	var time_remaining = int(game_time.time_left)
 	var seconds = time_remaining%60
 	var minutes = (time_remaining/60)%60
@@ -57,14 +60,38 @@ func _on_game_time_timeout():
 	pass
 
 func timers():
+	# First buff spawn
 	await get_tree().create_timer(10).timeout
-	for card_res in first_cards:
+	for card_res in third_cards:
 		var card = card_scene.instantiate()
 		card_selector.add_child(card)
 		card.start(card_res)
 	card_selector.show()
-	await get_tree().create_timer(5).timeout
+	get_tree().paused = true
+	await get_tree().create_timer(10).timeout
+	get_tree().paused = false
 	card_selector.hide()
-#	await get_tree().create_timer(180).timeout
-#	await get_tree().create_timer(150).timeout
+	# Second buff spawn
+	await get_tree().create_timer(180).timeout
+	for card_res in second_cards:
+		var card = card_scene.instantiate()
+		card_selector.add_child(card)
+		card.start(card_res)
+	card_selector.show()
+	get_tree().paused = true
+	await get_tree().create_timer(10).timeout
+	get_tree().paused = false
+	card_selector.hide()
+	# Third card spawn
+	await get_tree().create_timer(150).timeout
+	for card_res in third_cards:
+		var card = card_scene.instantiate()
+		card_selector.add_child(card)
+		card.start(card_res)
+	card_selector.show()
+	get_tree().paused = true
+	await get_tree().create_timer(10).timeout
+	get_tree().paused = false
+	card_selector.hide()
+	# End of the game
 #	await get_tree().create_timer(150).timeout

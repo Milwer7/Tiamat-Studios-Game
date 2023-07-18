@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardBuff" load_steps=3 format=3 uid="uid://d0d3ulaabq7yy"]
+
+[ext_resource type="Texture2D" uid="uid://cl1gojs8uuvca" path="res://assets/CardAssets/wings.png" id="1_k322m"]
+[ext_resource type="Script" path="res://scripts/card_buff.gd" id="2_mabwt"]
+
+[resource]
+script = ExtResource("2_mabwt")
+name = "Faster respawn"
+picture = ExtResource("1_k322m")
+description = "Respawn time reduced by 5s."
+action = "respawn_faster"

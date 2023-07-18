@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://3cyyxuum5qkw"]
+[gd_scene load_steps=35 format=3 uid="uid://3cyyxuum5qkw"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_cu8gd"]
 [ext_resource type="PackedScene" uid="uid://cs8sfu7xg4qbp" path="res://scenes/Player.tscn" id="2_pcwyn"]
@@ -14,10 +14,14 @@
 [ext_resource type="PackedScene" uid="uid://b7uetxanp4guo" path="res://scenes/Scores.tscn" id="6_ck8xy"]
 [ext_resource type="Texture2D" uid="uid://bvws7ndihfjko" path="res://assets_map/tilesets/fences.png" id="6_dtsx0"]
 [ext_resource type="PackedScene" uid="uid://dh5mejde0o6uv" path="res://scenes/healing_zone.tscn" id="6_jw0bp"]
+[ext_resource type="Resource" uid="uid://tkjpk6wryao6" path="res://resources/bullet_damage.tres" id="6_s281w"]
 [ext_resource type="Texture2D" uid="uid://5tyggr66fn17" path="res://assets_map/tilesets/decor_8x8.png" id="7_65n21"]
+[ext_resource type="Resource" uid="uid://5odtc08qvcvm" path="res://resources/bullet_immunity.tres" id="7_nya2m"]
 [ext_resource type="PackedScene" uid="uid://cjlgrsdprjitq" path="res://scenes/crosshair.tscn" id="7_y0vaw"]
 [ext_resource type="FontFile" uid="uid://ct104lniilrcm" path="res://assets/XTypewriter_Font_0_80/OpenType (.otf)/XTypewriter-Bold.otf" id="8_32aqu"]
+[ext_resource type="Resource" uid="uid://buekhh38phukm" path="res://resources/rapid_fire2.tres" id="8_dp42a"]
 [ext_resource type="Texture2D" uid="uid://faii2j6j6fmr" path="res://assets_map/tilesets/decor_16x16.png" id="8_xmi23"]
+[ext_resource type="Resource" uid="uid://d0d3ulaabq7yy" path="res://resources/respawn_faster.tres" id="9_k7qgj"]
 [ext_resource type="PackedScene" uid="uid://62k6w4m3gtdp" path="res://scenes/team_scores.tscn" id="14_g1ij8"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_yi826"]
@@ -1041,6 +1045,8 @@ pattern_3 = SubResource("TileMapPattern_lk4hl")
 script = ExtResource("1_cu8gd")
 player_scene = ExtResource("2_pcwyn")
 first_cards = Array[Resource("res://scripts/card_buff.gd")]([ExtResource("3_r1kyt"), ExtResource("4_qm20u"), ExtResource("5_obgta")])
+second_cards = Array[Resource("res://scripts/card_buff.gd")]([ExtResource("6_s281w"), ExtResource("5_obgta"), ExtResource("7_nya2m")])
+third_cards = Array[Resource("res://scripts/card_buff.gd")]([ExtResource("5_obgta"), ExtResource("8_dp42a"), ExtResource("9_k7qgj")])
 card_scene = ExtResource("4_2g4cw")
 
 [node name="TileMap2" type="TileMap" parent="."]
@@ -1183,6 +1189,7 @@ offset_right = 429.0
 offset_bottom = 72.0
 
 [node name="Crosshair" parent="." instance=ExtResource("7_y0vaw")]
+process_mode = 3
 
 [node name="GameTime" type="Timer" parent="."]
 wait_time = 600.0
@@ -1194,6 +1201,7 @@ wait_time = 15.0
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="CardSelector" type="HBoxContainer" parent="CanvasLayer2"]
+process_mode = 3
 visible = false
 anchors_preset = 15
 anchor_right = 1.0

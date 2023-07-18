@@ -2,6 +2,7 @@ extends Node
 
 # [ {id, name, team, node} ]
 var players: Array = []
+var card_selector
 
 func get_current_player():
 	var id = multiplayer.get_unique_id()

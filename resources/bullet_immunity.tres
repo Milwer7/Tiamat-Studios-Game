@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardBuff" load_steps=3 format=3 uid="uid://5odtc08qvcvm"]
+
+[ext_resource type="Texture2D" uid="uid://bp4m3j3ijo15b" path="res://assets/CardAssets/bulletproof-vest.png" id="1_e4msl"]
+[ext_resource type="Script" path="res://scripts/card_buff.gd" id="2_sgvyp"]
+
+[resource]
+script = ExtResource("2_sgvyp")
+name = "Regenerative Vest"
+picture = ExtResource("1_e4msl")
+description = "Makes you immune to a bullet. Reloads after 5s."
+action = "bullet_immunity"

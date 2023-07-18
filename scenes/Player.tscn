@@ -344,14 +344,19 @@ anim_player = NodePath("../AnimationPlayer")
 one_shot = true
 
 [node name="RespawnTime" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 10.0
 one_shot = true
 
 [node name="HealingTicks" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
+[node name="ImmunityTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]
 [connection signal="timeout" from="RespawnTime" to="." method="_on_respawn_time_timeout"]
 [connection signal="timeout" from="HealingTicks" to="." method="_on_healing_ticks_timeout"]
+[connection signal="timeout" from="ImmunityTimer" to="." method="_on_immunity_timer_timeout"]

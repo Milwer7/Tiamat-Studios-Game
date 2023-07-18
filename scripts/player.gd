@@ -20,6 +20,7 @@ var shooting_wait_time = 0.5
 @onready var respawn_time = $RespawnTime
 @onready var healing_ticks = $HealingTicks
 @onready var sprite = $Pivot/Sprite2D2
+@onready var immunity_timer = $ImmunityTimer
 
 
 var is_dead = false
@@ -32,6 +33,8 @@ var collected : Array = []
 var starting_point = Vector2.ZERO
 var on_healing_area = false
 var team
+var player_damage = 1
+var immune_to_bullets = false
 
 #export(PackedScene) var Bullet
 #var Bullet = PackedScene.new()
@@ -130,6 +133,8 @@ func send_data(pos: Vector2, vel: Vector2, mi: Vector2) -> void:
 	velocity = lerp(velocity, vel, 0.5)
 	move_input = mi
 
+func bullet_immunity():
+	immune_to_bullets = true
 
 func _on_collection_area_area_entered(area):
 	if area is Collectable:
@@ -138,7 +143,7 @@ func _on_collection_area_area_entered(area):
 	if area is Deposit:
 		is_on_deposit_zone = true
 	if area is HealingZone:
-		var healingZone = area as HealingZone
+		var _healingZone = area as HealingZone
 		on_healing_area = true
 		heal_player()
 
@@ -175,17 +180,19 @@ func _fire(mouse_position):
 		add_child(timer)
 		timer.start()
 
-
-
-@rpc("reliable","any_peer")		
-func on_hit(shooter_team):
+@rpc("reliable","any_peer")
+func on_hit(shooter_team, bullet_damage):
 	if shooter_team != team:
-		update_progress_bar.rpc()
+		if immune_to_bullets:
+			immune_to_bullets = false
+			immunity_timer.start()
+			return
+		update_progress_bar.rpc(bullet_damage)
 
 
 @rpc("call_local", "reliable", "any_peer")
-func update_progress_bar():
-	health -= 1
+func update_progress_bar(bullet_damage):
+	health -= 1 * bullet_damage
 	progress_bar.value = health * 5
 	if health <= 0:
 		destroy.rpc()
@@ -224,5 +231,24 @@ func _reflex(direction):
 			pivot.scale.x = -1  # Se rota 180 grados, el personaje mira hacia la izquierda 
 
 
-func _on_button_toggled(button_pressed):
+func _on_button_toggled(_button_pressed):
 	shooting_wait_time = 0.2
+
+@rpc("reliable", "call_remote", "any_peer")
+func update_speed(value):
+	self.speed = value
+
+@rpc("reliable", "call_remote", "any_peer")
+func update_fire_rate(value):
+	self.shooting_wait_time = value
+
+@rpc("reliable", "call_remote", "any_peer")
+func update_damage(value):
+	self.player_damage = value
+
+@rpc("reliable", "call_local", "any_peer")
+func update_respawn_time(value):
+	respawn_time.wait_time = value
+
+func _on_immunity_timer_timeout():
+	immune_to_bullets = true
