@@ -94,4 +94,5 @@ func timers():
 	get_tree().paused = false
 	card_selector.hide()
 	# End of the game
-#	await get_tree().create_timer(150).timeout
+	await get_tree().create_timer(150).timeout
+	get_tree().change_scene_to_file("res://scenes/Credits.tscn")
