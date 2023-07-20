@@ -5,7 +5,7 @@ extends CharacterBody2D
 var speed = 100
 var shooting_wait_time = 0.5
 @export var acceleration = 4000
-@export var backpack_max_size = 10
+@export var backpack_max_size = 3
 @export var backpack_size = 0
 @export var points = 0
 @onready var label = $Label
@@ -76,7 +76,7 @@ func _physics_process(delta) -> void:
 		move_character(delta) # Moving the character
 		
 		if Input.is_action_just_pressed("pick"):
-			if collectables.size() > 0:
+			if collectables.size() > 0 and backpack_size < backpack_max_size:
 				var first_collectable = collectables.pop_front()
 				collected.append(first_collectable.value)
 				backpack_size += 1

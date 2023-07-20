@@ -56,47 +56,44 @@ func on_scores_updated():
 	scores2.update_tables()
 
 
-func _on_game_time_timeout():
-	# TODO: Implement end of the game
-	pass
 
 func timers():
-	# First buff spawn 2 mins
-	await get_tree().create_timer(120).timeout
+	# First buff spawn 1 mins
+	await get_tree().create_timer(60).timeout
 	for card_res in third_cards:
 		var card = card_scene.instantiate()
 		card_selector.add_child(card)
 		card.start(card_res)
 	card_selector.show()
 	get_tree().paused = true
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(8).timeout
 	get_tree().paused = false
 	MusicaFondo.pause_buff_music()
 	card_selector.hide()
-	# Second buff spawn 3 mins
-	await get_tree().create_timer(180).timeout
+	# Second buff spawn 2 mins
+	await get_tree().create_timer(120).timeout
 	for card_res in second_cards:
 		var card = card_scene.instantiate()
 		card_selector.add_child(card)
 		card.start(card_res)
 	card_selector.show()
 	get_tree().paused = true
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(8).timeout
 	get_tree().paused = false
 	MusicaFondo.pause_buff_music()
 	card_selector.hide()
-	# Third card spawn 2.30 mins
-	await get_tree().create_timer(150).timeout
+	# Third card spawn 1 min
+	await get_tree().create_timer(60).timeout
 	for card_res in third_cards:
 		var card = card_scene.instantiate()
 		card_selector.add_child(card)
 		card.start(card_res)
 	card_selector.show()
 	get_tree().paused = true
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(8).timeout
 	get_tree().paused = false
 	MusicaFondo.pause_buff_music()
 	card_selector.hide()
-	# End of the game 2.30 mins
-	await get_tree().create_timer(150).timeout
+	# End of the game 2 mins
+	await get_tree().create_timer(120).timeout
 	get_tree().change_scene_to_file("res://scenes/final.tscn")
