@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1qst0q1v0i1m"
+path="res://.godot/imported/Patreon Goal Reward Loops - Track 04.wav-86d9e0349a2d5dadb0cf021bfc20dd07.sample"
+
+[deps]
+
+source_file="res://assets/Abstraction - Patreon Goal Reward Loops/Patreon Goal Reward Loops - Track 04.wav"
+dest_files=["res://.godot/imported/Patreon Goal Reward Loops - Track 04.wav-86d9e0349a2d5dadb0cf021bfc20dd07.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

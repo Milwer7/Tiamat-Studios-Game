@@ -1123,12 +1123,13 @@ gizmo_extents = 36.0
 [node name="Interactive" type="Node2D" parent="."]
 
 [node name="collectable" parent="Interactive" instance=ExtResource("4_roa2v")]
-position = Vector2(293, 175)
+position = Vector2(289, 209)
 scale = Vector2(0.3, 0.3)
 
 [node name="collectable2" parent="Interactive" instance=ExtResource("4_roa2v")]
-position = Vector2(290, 354)
+position = Vector2(282, 326)
 scale = Vector2(0.3, 0.3)
+value = 5
 
 [node name="deposit" parent="Interactive" instance=ExtResource("5_22m16")]
 position = Vector2(29, 29)
@@ -1139,22 +1140,23 @@ position = Vector2(934, 909)
 scale = Vector2(0.3, 0.3)
 
 [node name="collectable3" parent="Interactive" instance=ExtResource("4_roa2v")]
-position = Vector2(850, 174)
+position = Vector2(707, 228)
 scale = Vector2(0.3, 0.3)
+value = 10
 
 [node name="collectable4" parent="Interactive" instance=ExtResource("4_roa2v")]
-position = Vector2(559, 223)
+position = Vector2(501, 220)
 scale = Vector2(0.3, 0.3)
-value = 10
+value = 5
 
 [node name="collectable5" parent="Interactive" instance=ExtResource("4_roa2v")]
-position = Vector2(558, 292)
+position = Vector2(462, 340)
 scale = Vector2(0.3, 0.3)
-value = 10
 
 [node name="collectable6" parent="Interactive" instance=ExtResource("4_roa2v")]
-position = Vector2(851, 347)
+position = Vector2(703, 343)
 scale = Vector2(0.3, 0.3)
+value = 10
 
 [node name="HealingZone" parent="Interactive" instance=ExtResource("6_jw0bp")]
 position = Vector2(478, 481)

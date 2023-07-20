@@ -21,5 +21,8 @@ func _physics_process(delta):
 func _check_scroll_ended():
 	if not scroll_ended:
 		scroll_ended = true
+		multiplayer.multiplayer_peer.close()
+		Game.players = []
 		await get_tree().create_timer(3).timeout
+		Game.teamwinner = 0
 		get_tree().change_scene_to_file("res://scenes/start_menu.tscn")

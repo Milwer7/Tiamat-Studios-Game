@@ -13,10 +13,11 @@ extends Node2D
 @onready var game_time = $GameTime
 @onready var time_remaining_label = $CanvasLayer/TimeRemainingLabel
 @onready var card_selector = $CanvasLayer2/CardSelector
+@onready var collectable = $Interactive/collectable
 
 func _ready():
-	Game.players.sort_custom(func(a, b): return a.id < b.id)
-
+	MusicaFondo.pause_menu_music()
+	Game.players.sort_custom(func(a, b): return a.id < b.id)	
 	for i in Game.players.size():
 		var id = Game.players[i].id
 		var player : Player = player_scene.instantiate()
@@ -61,15 +62,16 @@ func _on_game_time_timeout():
 
 func timers():
 	# First buff spawn
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(5).timeout
 	for card_res in third_cards:
 		var card = card_scene.instantiate()
 		card_selector.add_child(card)
 		card.start(card_res)
 	card_selector.show()
 	get_tree().paused = true
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(5).timeout
 	get_tree().paused = false
+	MusicaFondo.pause_buff_music()
 	card_selector.hide()
 	# Second buff spawn
 	await get_tree().create_timer(180).timeout
@@ -79,8 +81,9 @@ func timers():
 		card.start(card_res)
 	card_selector.show()
 	get_tree().paused = true
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(5).timeout
 	get_tree().paused = false
+	MusicaFondo.pause_buff_music()
 	card_selector.hide()
 	# Third card spawn
 	await get_tree().create_timer(150).timeout
@@ -90,9 +93,10 @@ func timers():
 		card.start(card_res)
 	card_selector.show()
 	get_tree().paused = true
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(5).timeout
 	get_tree().paused = false
+	MusicaFondo.pause_buff_music()
 	card_selector.hide()
 	# End of the game
 	await get_tree().create_timer(150).timeout
-	get_tree().change_scene_to_file("res://scenes/Credits.tscn")
+	get_tree().change_scene_to_file("res://scenes/final.tscn")

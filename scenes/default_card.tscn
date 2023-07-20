@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjpaiibhndgxt"]
+[gd_scene load_steps=6 format=3 uid="uid://cjpaiibhndgxt"]
 
 [ext_resource type="Script" path="res://scripts/default_card.gd" id="1_bnag6"]
 [ext_resource type="Texture2D" uid="uid://btdre5okqp1yk" path="res://assets/CardAssets/rapid_fire.png" id="1_vxpyd"]
 [ext_resource type="FontFile" uid="uid://cuhfkkov4magk" path="res://assets/XTypewriter_Font_0_80/TrueType (.ttf)/XTypewriter-Bold.ttf" id="3_nu6u0"]
 [ext_resource type="FontFile" uid="uid://c8hxqaf6e2q73" path="res://assets/XTypewriter_Font_0_80/TrueType (.ttf)/XTypewriter-Regular.ttf" id="4_kw6la"]
+[ext_resource type="AudioStream" uid="uid://bjyox71vlud82" path="res://assets/Abstraction - Patreon Goal Reward Loops/Retro9.mp3" id="5_73wkk"]
 
 [node name="DefaultCard" type="PanelContainer"]
 offset_right = 40.0
@@ -58,3 +59,7 @@ theme_override_font_sizes/font_size = 32
 text = "Increases the Rate of Fire"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_73wkk")
+volume_db = -3.617

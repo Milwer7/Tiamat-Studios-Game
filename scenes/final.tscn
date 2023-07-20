@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6hkg5vdqj7l7"]
+
+[ext_resource type="Script" path="res://scenes/final.gd" id="1_7tk6y"]
+[ext_resource type="Texture2D" uid="uid://cr37a56c8igmu" path="res://assets/war-pixel-art-2d-game-backgrounds/PNG/War4/0.png" id="2_y5dl2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h8wcc"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_h0r7s"]
+font_size = 30
+
+[node name="final" type="MarginContainer"]
+offset_right = 1151.0
+offset_bottom = 648.0
+script = ExtResource("1_7tk6y")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "
+
+CONGRATULATIONS
+"
+label_settings = SubResource("LabelSettings_h8wcc")
+horizontal_alignment = 1
+
+[node name="mensaje" type="Label" parent="."]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_h0r7s")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 324)
+scale = Vector2(0.598958, 0.6)
+texture = ExtResource("2_y5dl2")

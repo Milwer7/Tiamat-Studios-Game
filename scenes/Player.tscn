@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cs8sfu7xg4qbp"]
+[gd_scene load_steps=21 format=3 uid="uid://cs8sfu7xg4qbp"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jd037"]
 [ext_resource type="Texture2D" uid="uid://cmym3bta3vwig" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Black/Gunner_Black_Idle.png" id="2_t4fu1"]
 [ext_resource type="Texture2D" uid="uid://c73jrc30lth8m" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Red/Gunner_Red_Idle.png" id="3_a2g68"]
 [ext_resource type="Texture2D" uid="uid://b43fdd43o7pqw" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Black/Gunner_Black_Run.png" id="4_84xjs"]
 [ext_resource type="Texture2D" uid="uid://4047g70hab2p" path="res://assets/TeamGunner_By_SecretHideout_060519/CHARACTER_SPRITES/Red/Gunner_Red_Run.png" id="4_auljk"]
+[ext_resource type="AudioStream" path="res://assets/GunShotSnglShotIn PE1097906.tres" id="6_e6jec"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y08x6"]
 radius = 3.0
@@ -354,6 +355,12 @@ one_shot = true
 [node name="ImmunityTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_e6jec")
+volume_db = -14.47
+max_distance = 700.0
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_collection_area_area_entered"]
 [connection signal="area_exited" from="CollectionArea" to="." method="_on_collection_area_area_exited"]

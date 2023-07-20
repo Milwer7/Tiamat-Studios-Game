@@ -15,6 +15,7 @@ const PORT = 5409
 
 @onready var cancel = $PanelContainer/MarginContainer/Pending/HBoxContainer/Cancel
 @onready var go = $PanelContainer/MarginContainer/Pending/HBoxContainer/Go2/Go
+@onready var soundbutton = %soundbutton
 
 @onready var info = $PanelContainer/MarginContainer/Start/Info
 @onready var button = $PanelContainer/MarginContainer/Pending/TeamSelector/Button
@@ -26,6 +27,7 @@ var status = { 1 : false }
 
 
 func _ready():
+	print(Game.players.size())
 	host.pressed.connect(_on_host_pressed)
 	join.pressed.connect(_on_join_pressed)
 	multiplayer.peer_connected.connect(_on_peer_connected)
@@ -53,6 +55,7 @@ func _on_upnp_completed(status) -> void:
 	
 
 func _on_host_pressed() -> void:
+	soundbutton.play()
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(PORT, MAX_PLAYERS)
 	multiplayer.multiplayer_peer = peer
@@ -62,7 +65,7 @@ func _on_host_pressed() -> void:
 
 
 func _on_join_pressed() -> void:
-
+	soundbutton.play()
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client(ip.text, PORT)
 	multiplayer.multiplayer_peer = peer
@@ -104,10 +107,12 @@ func _paint_ready(id: int) -> void:
 
 
 func _on_go_pressed() -> void:
+	soundbutton.play()
 	rpc("player_ready")
 	_paint_ready(multiplayer.get_unique_id())
 	
 func _on_cancel_pressed() -> void:
+	soundbutton.play()
 	multiplayer.multiplayer_peer.close()
 	get_tree().change_scene_to_file("res://scenes/start_menu.tscn")
 	
@@ -138,10 +143,12 @@ func send_team(teamm: int):
 			Game.players[i].team = teamm
 			
 func onTeam1ButtonPressed():
+	soundbutton.play()
 	team = 1
 	send_team.rpc(team)
 
 func onTeam2ButtonPressed():
+	soundbutton.play()
 	team = 2
 	send_team.rpc(team)
 

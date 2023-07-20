@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmkstpk1a00ln"]
 
-[ext_resource type="Texture2D" uid="uid://cr37a56c8igmu" path="res://assets/war-pixel-art-2d-game-backgrounds/PNG/War4/0.png" id="1_na25t"]
 [ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_wqq8i"]
+[ext_resource type="Texture2D" uid="uid://11r76gwlj4dl" path="res://image.png" id="2_4ljs2"]
 [ext_resource type="FontFile" uid="uid://cuhfkkov4magk" path="res://assets/XTypewriter_Font_0_80/TrueType (.ttf)/XTypewriter-Bold.ttf" id="2_fmx3d"]
 [ext_resource type="FontFile" uid="uid://c8hxqaf6e2q73" path="res://assets/XTypewriter_Font_0_80/TrueType (.ttf)/XTypewriter-Regular.ttf" id="3_p36eq"]
 
@@ -18,7 +18,7 @@ script = ExtResource("1_wqq8i")
 layout_mode = 2
 offset_right = 1152.0
 offset_bottom = 649.0
-texture = ExtResource("1_na25t")
+texture = ExtResource("2_4ljs2")
 expand_mode = 2
 
 [node name="Label" type="Label" parent="."]

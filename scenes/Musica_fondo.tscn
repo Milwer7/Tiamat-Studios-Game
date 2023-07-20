@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyhlyowi3a3st"]
+
+[ext_resource type="AudioStream" uid="uid://wyshwdr30d3p" path="res://assets/Abstraction - Patreon Goal Reward Loops/1_C9PzUEag.mp3" id="1_fy3qg"]
+[ext_resource type="Script" path="res://scripts/Musica_fondo.gd" id="2_nqxoo"]
+[ext_resource type="AudioStream" uid="uid://bbl3ymcd5q0ya" path="res://assets/Abstraction - Patreon Goal Reward Loops/Patreon-Goal-Reward-Loops-Track-08.mp3" id="3_di6y5"]
+[ext_resource type="AudioStream" uid="uid://bbhw0ft7ahlux" path="res://assets/Abstraction - Patreon Goal Reward Loops/Patreon Goal Reward Loops - Track 12.wav" id="4_2o0m2"]
+
+[node name="Controladordemusica" type="Node"]
+script = ExtResource("2_nqxoo")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("1_fy3qg")
+volume_db = -17.183
+
+[node name="MusicGame" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("3_di6y5")
+volume_db = -10.852
+
+[node name="Musicbuffs" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_2o0m2")

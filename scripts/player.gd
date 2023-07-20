@@ -21,7 +21,7 @@ var shooting_wait_time = 0.5
 @onready var healing_ticks = $HealingTicks
 @onready var sprite = $Pivot/Sprite2D2
 @onready var immunity_timer = $ImmunityTimer
-
+@onready var shoot = %shoot
 
 var is_dead = false
 var can_fire = 1
@@ -159,6 +159,7 @@ func _on_collection_area_area_exited(body):
 @rpc("reliable","call_local")
 func _fire(mouse_position):
 	if can_fire:
+		shoot.play()
 		var bullet = Bullet.instantiate()
 		bullet.shooter_team = team
 		var id = multiplayer.get_remote_sender_id()

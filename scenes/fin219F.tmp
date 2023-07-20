@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6hkg5vdqj7l7"]
+
+[ext_resource type="Script" path="res://scenes/final.gd" id="1_7tk6y"]
+
+[node name="final" type="MarginContainer"]
+script = ExtResource("1_7tk6y")
+
+[node name="mensaje" type="Label" parent="."]
+layout_mode = 2

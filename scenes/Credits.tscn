@@ -14,6 +14,7 @@ script = ExtResource("1_4t5fc")
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2
 follow_focus = true
+horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
@@ -40,16 +41,24 @@ layout_mode = 2
 text = "-Sprites-
 Backpack by Freepik
 
-Pixel-Guns asset pack
+Mystic Woods 
+16x16 Pixel
+ Art Asset Pack 
+by Game Endeavor
 
 Boot by Smashicons
 
+Gunner Animated Character 
+by Secret Hideout
+
 -Music & SFX-
 
-Energetic upbeat indie rock
- explosive mix
+[Music Assets] FREE Music
+ Loop Bundle 
+by Tallbeard Studios
 
-GunShotSnglShotIn"
+Universal UI/Menu 
+Soundpack by Ellr"
 horizontal_alignment = 1
 
 [node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer"]

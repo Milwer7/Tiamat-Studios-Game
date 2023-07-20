@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://1rsjd4d8tfpq"]
+[gd_scene load_steps=6 format=3 uid="uid://1rsjd4d8tfpq"]
 
 [ext_resource type="Script" path="res://scripts/collectable.gd" id="1_407ee"]
 [ext_resource type="Texture2D" uid="uid://b66c6x4nvswgh" path="res://assets/Free 2D Animated Vector Game Character Sprites/Weapons/weaponR1.png" id="2_rdch8"]
+[ext_resource type="Texture2D" uid="uid://dl65ngge1an1j" path="res://assets/Free 2D Animated Vector Game Character Sprites/Weapons/weaponR2.png" id="3_ewpbr"]
+[ext_resource type="Texture2D" uid="uid://ccpheb6800gkg" path="res://assets/Free 2D Animated Vector Game Character Sprites/Weapons/weaponR3.png" id="4_oxk42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkxny"]
 
@@ -9,6 +11,8 @@
 script = ExtResource("1_407ee")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.301961, 0.741176, 0.803922, 1)
 position = Vector2(-4, -24)
 scale = Vector2(0.0918735, 0.0774184)
 texture = ExtResource("2_rdch8")
@@ -18,3 +22,20 @@ offset = Vector2(0, -100)
 visible = false
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_pkxny")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.52549, 0.133333, 0.25098, 1)
+position = Vector2(-4, -24)
+scale = Vector2(0.0918735, 0.0774184)
+texture = ExtResource("3_ewpbr")
+offset = Vector2(0, -100)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.266667, 0.282353, 0.811765, 1)
+self_modulate = Color(0.917558, 0.601782, 0.135141, 1)
+position = Vector2(-4, -24)
+scale = Vector2(0.0918735, 0.0774184)
+texture = ExtResource("4_oxk42")
+offset = Vector2(0, -100)
