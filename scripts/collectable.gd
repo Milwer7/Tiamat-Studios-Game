@@ -21,6 +21,7 @@ func actualizar_sprite():
 @rpc("call_local", "reliable", "any_peer")
 func destroy():
 	collectable.hide()
-	await get_tree().create_timer(5).timeout
+	monitorable = false
+	await get_tree().create_timer(8).timeout
 	collectable.show()
-	
+	monitorable = true

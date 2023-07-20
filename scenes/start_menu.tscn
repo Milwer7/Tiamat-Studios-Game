@@ -44,3 +44,12 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_p36eq")
 text = "Press Enter"
 horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_top = 527.0
+offset_right = 1152.0
+offset_bottom = 549.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_p36eq")
+text = "Press Tab for Credits"
+horizontal_alignment = 1

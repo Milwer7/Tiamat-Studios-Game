@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dh5mejde0o6uv"]
 
-[ext_resource type="Script" path="res://HealingZone.gd" id="1_p1w4u"]
+[ext_resource type="Script" path="res://scripts/HealingZone.gd" id="1_p1w4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18u8n"]
 

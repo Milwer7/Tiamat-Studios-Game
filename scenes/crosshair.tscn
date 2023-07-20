@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjlgrsdprjitq"]
 
 [ext_resource type="Texture2D" uid="uid://8i3kvrvpwqae" path="res://assets/Crosshair for 2d games/crosshair.png" id="1_w618w"]
-[ext_resource type="Script" path="res://Crosshair.gd" id="2_lq16a"]
+[ext_resource type="Script" path="res://scripts/Crosshair.gd" id="2_lq16a"]
 
 [node name="Crosshair" type="Sprite2D"]
 top_level = true
