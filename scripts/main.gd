@@ -60,7 +60,7 @@ func on_scores_updated():
 func timers():
 	# First buff spawn 1 mins
 	await get_tree().create_timer(60).timeout
-	for card_res in third_cards:
+	for card_res in first_cards:
 		var card = card_scene.instantiate()
 		card_selector.add_child(card)
 		card.start(card_res)
@@ -70,6 +70,8 @@ func timers():
 	get_tree().paused = false
 	MusicaFondo.pause_buff_music()
 	card_selector.hide()
+	for child in Game.card_selector.get_children():
+		child.queue_free()
 	# Second buff spawn 2 mins
 	await get_tree().create_timer(120).timeout
 	for card_res in second_cards:
@@ -82,6 +84,8 @@ func timers():
 	get_tree().paused = false
 	MusicaFondo.pause_buff_music()
 	card_selector.hide()
+	for child in Game.card_selector.get_children():
+		child.queue_free()
 	# Third card spawn 1 min
 	await get_tree().create_timer(60).timeout
 	for card_res in third_cards:
@@ -93,6 +97,8 @@ func timers():
 	await get_tree().create_timer(8).timeout
 	get_tree().paused = false
 	MusicaFondo.pause_buff_music()
+	for child in Game.card_selector.get_children():
+		child.queue_free()
 	card_selector.hide()
 	# End of the game 2 mins
 	await get_tree().create_timer(120).timeout
